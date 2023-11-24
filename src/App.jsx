@@ -1,7 +1,6 @@
 import "./App.css";
 
 function App() {
-
   return (
     <>
       <h2>soul-mate-search</h2>
