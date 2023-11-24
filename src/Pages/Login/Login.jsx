@@ -55,7 +55,7 @@ const Login = () => {
               />
             </div>
 
-            <div className=" mt-5 mt-5">
+            <div className=" mt-5">
               <div className="text-sm font-bold text-gray-700 tracking-wide">
                 Password
               </div>
@@ -82,7 +82,7 @@ const Login = () => {
 
             {/* {passwordError && <p className="text-red-500">{passwordError}</p>} */}
 
-            <div className=" mt-5 mt-6">
+            <div className=" mt-5 ">
               <button
                 disabled={disabled}
                 className="w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64]"
