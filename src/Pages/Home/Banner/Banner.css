@@ -1,0 +1,6 @@
+.banner_bg{
+    height: 700px;
+    background-image: url('../../../assets//Banner/image2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
