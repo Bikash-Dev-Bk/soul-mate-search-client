@@ -16,7 +16,6 @@ const Biodatas = () => {
     },
   });
 
-  console.log("axios", biodatas);
 
   return (
     <div>

@@ -11,7 +11,7 @@ const SuccessStory = () => {
   const [successStory, setSuccessStory] = useState([]);
 
   useEffect(() => {
-    fetch("successStory.json")
+    fetch("http://localhost:5000/stories")
       .then((res) => res.json())
       .then((data) => {
         const sortedData = data.sort(
@@ -29,7 +29,7 @@ const SuccessStory = () => {
 
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {successStory.map((story) => (
-          <SwiperSlide key={story.id} story={story}>
+          <SwiperSlide key={story._id} story={story}>
             <div className="flex flex-col items-center text-justify md:text-center p-8 md:p-12 lg:px-32">
               <img
                 src={story.coupleImage}
