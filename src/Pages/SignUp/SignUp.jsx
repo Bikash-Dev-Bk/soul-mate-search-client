@@ -1,18 +1,77 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsPersonCircle } from "react-icons/bs";
-import '../Login/Login.css';
+import "../Login/Login.css";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+  const { createUser, signInWithGoogle, updateUserProfile } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-      } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          // create user entry in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the database");
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User created successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
+        })
+        .catch((error) => console.log(error));
+    });
+  };
+
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle().then((result) => {
+      console.log(result.user);
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.displayName,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Logged in Successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      });
+    });
+  };
 
   return (
     <div className="bg_image bg-base-200 pt-6 pb-12 px-4">
@@ -26,9 +85,7 @@ const SignUp = () => {
           <BsPersonCircle className="text-[80px]" />
         </div>
         <div className=" w-full md:w-[450px] mx-auto bg-white rounded-xl  bg-base-100 mt-10 p-8">
-          <form 
-        //   onSubmit={handleSubmit(onSubmit)} 
-          className="">
+          <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="">
               <div className="text-sm font-bold text-gray-700 tracking-wide">
                 Your Name
@@ -123,7 +180,7 @@ const SignUp = () => {
               <span className="h-px bg-gray-400 w-14"></span>
             </p>
             <button
-            //   onClick={handleSignInWithGoogle}
+              onClick={handleSignInWithGoogle}
               className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#D70F64]  hover:bg-[#D70F64] hover:text-white"
             >
               <FcGoogle className="text-2xl" />{" "}
