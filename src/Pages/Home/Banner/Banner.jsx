@@ -1,11 +1,10 @@
-
 import "./Banner.css";
 
 const Banner = () => {
   return (
     <div className="relative banner_bg">
       <div className="overlay"></div>
-      <div className="max-w-5xl h-full mx-auto text-center flex justify-center items-center">
+      <div className="max-w-5xl h-full mx-auto text-center flex justify-center items-center  z-10 relative">
         <div className="mt-56">
           <h2 className="text-white font-bold text-2xl lg:text-4xl">
             Trusted Matrimony & Matchmaking Service
@@ -20,4 +19,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
