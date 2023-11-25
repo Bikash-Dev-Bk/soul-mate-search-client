@@ -1,0 +1,50 @@
+[
+  {
+    "biodataId": 1,
+    "biodataType": "Male",
+    "profileImage": "https://i.ibb.co/F5TT0Qr/person5.jpg",
+    "permanentDivision": "Dhaka",
+    "age": 23,
+    "occupation": "Student"
+  },
+  {
+    "biodataId": 2,
+    "biodataType": "Female",
+    "profileImage": "https://i.ibb.co/48zpcv3/sarah.jpg",
+    "permanentDivision": "Chattogram",
+    "age": 25,
+    "occupation": "Job"
+  },
+  {
+    "biodataId": 3,
+    "biodataType": "Male",
+    "profileImage": "https://i.ibb.co/7SycXV4/person2.jpg",
+    "permanentDivision": "Rangpur",
+    "age": 30,
+    "occupation": "Job"
+  },
+  {
+    "biodataId": 4,
+    "biodataType": "Female",
+    "profileImage": "https://i.ibb.co/FYNhDXV/person8.jpg",
+    "permanentDivision": "Barisal",
+    "age": 23,
+    "occupation": "Student"
+  },
+  {
+    "biodataId": 5,
+    "biodataType": "Male",
+    "profileImage": "https://i.ibb.co/pW7Ph69/person7.jpg",
+    "permanentDivision": "Khulna",
+    "age": 45,
+    "occupation": "Job"
+  },
+  {
+    "biodataId": 6,
+    "biodataType": "Female",
+    "profileImage": "https://i.ibb.co/10CF6Rm/person4.jpg",
+    "permanentDivision": "Maymansign",
+    "age": 30,
+    "occupation": "House wife"
+  }
+]

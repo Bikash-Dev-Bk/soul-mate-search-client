@@ -4,7 +4,7 @@ import './SuccessCounter.css';
 
 const SuccessCounter = () => {
   return (
-    <div className="max-w-[1280px] mx-auto my-32 p-5 bg-success md:12 lg:p-24">
+    <div className="bg-success bg-fixed max-w-[1280px] mx-auto my-32 p-5 md:12 lg:p-24">
       <h2 className="text-center text-3xl font-bold mb-12">We have a proven track record of success</h2>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between">
         <div className="flex flex-col justify-center items-center text-center bg-red-400 p-5 rounded-lg text-white">
