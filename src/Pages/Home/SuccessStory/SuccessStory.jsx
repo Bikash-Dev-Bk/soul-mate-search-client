@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Rating } from "@smastrom/react-rating";
-// import SuccessStoryCard from "./SuccessStoryCard/SuccessStoryCard";
-import { BiSolidQuoteLeft } from "react-icons/bi";
 
 import "@smastrom/react-rating/style.css";
 import "swiper/css";
