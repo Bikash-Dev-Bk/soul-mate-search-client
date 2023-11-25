@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsPersonCircle } from "react-icons/bs";
 import {
@@ -9,22 +9,86 @@ import {
 } from "react-simple-captcha";
 import "./Login.css";
 import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const [disabled, setDisabled] = useState(true);
+  const { signIn, signInWithGoogle } = useAuth();
 
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-      }, []);
-    
-      const handleValidateCaptcha = (e) => {
-        const user_captcha_value = e.target.value;
-        if (validateCaptcha(user_captcha_value)) {
-          setDisabled(false);
-        } else {
-          setDisabled(true);
-        }
+  const axiosPublic = useAxiosPublic();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const [disabled, setDisabled] = useState(true);
+  const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // console.log(email, password);
+    setPasswordError("");
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Logged in Successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        setPasswordError(error.message);
+      });
+  };
+
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle().then((result) => {
+      console.log(result.user);
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.displayName,
       };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User Logged in Successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      });
+    });
+  };
 
   return (
     <div className=" bg_image pt-6 pb-12 px-4">
@@ -38,10 +102,7 @@ const Login = () => {
           <BsPersonCircle className="text-[80px]" />
         </div>
         <div className=" w-full md:w-[450px] mx-auto bg-white rounded-xl  bg-base-100 mt-10 p-8">
-          <form
-            //   onSubmit={handleSubmit}
-            className=""
-          >
+          <form onSubmit={handleSubmit} className="">
             <div className=" mt-5">
               <div className="text-sm font-bold text-gray-700 tracking-wide">
                 Email
@@ -80,12 +141,10 @@ const Login = () => {
               />
             </div>
 
-            {/* {passwordError && <p className="text-red-500">{passwordError}</p>} */}
+            {passwordError && <p className="text-red-500">{passwordError}</p>}
 
             <div className=" mt-5 ">
-              <button
-                disabled={disabled}
-                className="w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64]"
+              <button disabled={disabled} className="w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64]"
               >
                 Login
               </button>
@@ -96,10 +155,9 @@ const Login = () => {
               <span className="h-px bg-gray-400 w-14"></span>
             </p>
             <button
-              //   onClick={handleSignInWithGoogle}
+              onClick={handleSignInWithGoogle}
               className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#D70F64]  hover:bg-[#D70F64] hover:text-white"
             >
-            
               <FcGoogle className="text-2xl" />{" "}
               <span className="ml-2">Google</span>{" "}
             </button>
