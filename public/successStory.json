@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "coupleImage": "https://i.ibb.co/3v9DXCR/couple-1.jpg",
+    "marriageDate": "2022-05-15",
+    "reviewStar": 5,
+    "successStoryText": "Our hearts intertwined on this platform, and from our first conversation to the day we said 'I do,' the journey has been magical. Thank you for bringing us together. We are blessed to share our love story and happily ever after with the world!"
+  },
+  {
+    "id": 2,
+    "coupleImage": "https://i.ibb.co/cCLFHXy/couple-2.jpg",
+    "marriageDate": "2021-09-30",
+    "reviewStar": 4,
+    "successStoryText": "Our love story began here, and every moment has been a cherished chapter. Through laughter, tears, and countless memories, we built a life together. Grateful for the platform that sparked our connection and for the community that celebrates love."
+  },
+  {
+    "id": 3,
+    "coupleImage": "https://i.ibb.co/5Bv4zY4/couple-3.jpg",
+    "marriageDate": "2023-01-10",
+    "reviewStar": 5,
+    "successStoryText": "In the vast digital landscape, we found a love so real. From the first message to our wedding day, the bond grew stronger. This platform connected our hearts, and we are forever grateful for the chance to build a beautiful life together. Cheers to love!"
+  },
+  {
+    "id": 4,
+    "coupleImage": "https://i.ibb.co/nbg3XYZ/couple-4.jpg",
+    "marriageDate": "2020-07-22",
+    "reviewStar": 5,
+    "successStoryText": "Our story, born on this platform, is a testament to the power of love. Through challenges and triumphs, we found a soul connection. The journey from 'I do' to happily ever after has been extraordinary. Thank you for helping us create our forever."
+  },
+  {
+    "id": 5,
+    "coupleImage": "https://i.ibb.co/XSMBBmn/couple-5.jpg",
+    "marriageDate": "2022-11-05",
+    "reviewStar": 4,
+    "successStoryText": "Love knows no boundaries, and we discovered it here. Through shared dreams and unconditional support, we navigated life's journey hand in hand. Gratitude fills our hearts for the platform that brought us together. Here's to a lifetime of love and joy!"
+  },
+  {
+    "id": 6,
+    "coupleImage": "https://i.ibb.co/74p7Fb3/couple-6.jpg",
+    "marriageDate": "2021-03-18",
+    "reviewStar": 4,
+    "successStoryText": "Our love story, sparked on this platform, unfolded into a beautiful tapestry. From the first hello to the promises we made, every moment has been a cherished chapter. Grateful for the chance to create a lifetime of memories together. Cheers to love and new beginnings!"
+  }
+]
