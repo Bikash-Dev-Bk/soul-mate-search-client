@@ -33,7 +33,7 @@ const BiodataDetails = ({ biodata }) => {
           alt=""
           className="w-full md:w-1/2 rounded-xl border-2 border-[#D70F64] "
         />
-        <div className="p-5 font-semibold">
+        <div className="font-semibold mt-5 md:mt-0">
           <h2 className="font-bold">Name: {name}</h2>
           <p>Age: {age}</p>
           <p>Weight: {weight} KG</p>
