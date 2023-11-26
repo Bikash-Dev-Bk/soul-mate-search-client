@@ -1,0 +1,13 @@
+.biodata-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+
+@media (max-width: 1000px) {
+    .biodata-details-container{
+        grid-template-columns: 1fr;
+    }
+}
