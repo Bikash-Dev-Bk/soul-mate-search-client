@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact/Contact";
 import Biodatas from "../Pages/Biodatas/Biodatas/Biodatas";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import BiodataDetailsContainer from "../Pages/BiodataDetails/BiodataDetailsContainer/BiodataDetailsContainer";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/biodatas/details/:id",
-        element: <BiodataDetailsContainer></BiodataDetailsContainer>,
+        element: <PrivateRoute><BiodataDetailsContainer></BiodataDetailsContainer></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
