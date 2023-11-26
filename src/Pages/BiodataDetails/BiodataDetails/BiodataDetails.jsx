@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const BiodataDetails = ({ biodata }) => {
   const {
-    _id,
     biodataId,
     name,
     biodataType,
@@ -69,7 +68,7 @@ const BiodataDetails = ({ biodata }) => {
         </div>
       </div>
       <div className="">
-      <Link to={`/checkout/${_id}`}>
+      <Link to={`/checkout/${biodataId}`}>
         <button className="w-1/2 md:w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64] mt-4">
           Request Contact Information
         </button>

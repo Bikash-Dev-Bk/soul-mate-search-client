@@ -25,13 +25,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/biodatas/details/:id",
-        element: <PrivateRoute><BiodataDetailsContainer></BiodataDetailsContainer></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BiodataDetailsContainer></BiodataDetailsContainer>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
       {
         path: "/checkout/:id",
-        element: <CheckOut></CheckOut>,
+        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
       {
         path: "/about",
