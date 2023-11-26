@@ -23,7 +23,6 @@ const BioDataCard = ({ data }) => {
   );
 };
 
-
 BioDataCard.propTypes = {
   data: PropTypes.object.isRequired,
 };

@@ -1,12 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import "./Biodatas.css";
-import BioDataCard from "./BioDataCard";
 import HeroPages from "../../../components/HeroPages/HeroPages";
 import { Helmet } from "react-helmet";
+import { useForm } from "react-hook-form";
+import BioDataCard from "../BioDataCard/BioDataCard";
+import BioDataFilter from "../BioDataFilter/BioDataFilter";
+import "./Biodatas.css";
+
 
 const Biodatas = () => {
   const axiosPublic = useAxiosPublic();
+  const { register, handleSubmit, reset } = useForm();
 
   const { data: biodatas = [], refetch } = useQuery({
     queryKey: ["biodatas"],
@@ -16,6 +20,7 @@ const Biodatas = () => {
     },
   });
 
+  const onSubmit = async (data) => {};
 
   return (
     <div>
@@ -23,11 +28,8 @@ const Biodatas = () => {
         <title>Soul Mate Search | Bio Data's</title>
       </Helmet>
       <HeroPages name="Bio Data's"></HeroPages>
-      <div className="max-w-[1280px] mx-auto p-5 biodatas-container my-24">
-        <div>
-          <h2>Search and filter</h2>
-        </div>
-
+      <div className="max-w-[1280px] mx-auto  biodatas-container my-24 p-5">
+        <BioDataFilter></BioDataFilter>
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-center">
           {biodatas.map((data) => (
             <BioDataCard key={data._id} data={data}></BioDataCard>
