@@ -39,8 +39,8 @@ const Works = () => {
       <h2 className="text-center text-3xl font-bold mb-4">
         How Soul Mate Search Works
       </h2>
-      <p className="text-center text-lg">Get started in 3 easy steps</p>
-      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between items-center text-center">
+      <p className="text-center text-lg">Get started in 4 easy steps</p>
+      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between items-center text-center mt-12">
         {workProcedure.map((work) => (
           <div
             key={work.id}

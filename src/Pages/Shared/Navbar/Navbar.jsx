@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../../../assets/logo/logo.png";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
@@ -12,33 +12,69 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  const location = useLocation();
+  const [activeRoute, setActiveRoute] = useState("");
+
+  useEffect(() => {
+    setActiveRoute(location.pathname);
+  }, [location.pathname]);
+
   const navLinks = (
     <>
-      <li className="hover:text-[#ff4d30]">
-        <Link className="home-link" to="/">
+      <li>
+        <NavLink
+          to="/"
+          className={`${
+            activeRoute === "/" && "!text-[#D70F64] font-bold  !bg-inherit"
+          }`}
+        >
           Home
-        </Link>
+        </NavLink>
       </li>
       <li className="hover:text-[#ff4d30]">
-        <Link className="home-link" to="/biodatas">
+        <NavLink
+          to="/biodatas"
+          className={`${
+            activeRoute === "/biodatas" &&
+            "!text-[#D70F64] font-bold  !bg-inherit"
+          }`}
+        >
           Biodatas
-        </Link>
+        </NavLink>
       </li>
       <li className="hover:text-[#ff4d30]">
         {" "}
-        <Link className="about-link" to="/about">
+        <NavLink
+          to="/about"
+          className={`${
+            activeRoute === "/about" && "!text-[#D70F64] font-bold  !bg-inherit"
+          }`}
+        >
           About
-        </Link>
+        </NavLink>
       </li>
       <li className="hover:text-[#ff4d30]">
         {" "}
-        <Link className="contact-link" to="/contact">
+        <NavLink
+          to="/contact"
+          className={`${
+            activeRoute === "/contact" &&
+            "!text-[#D70F64] font-bold  !bg-inherit"
+          }`}
+        >
           Contact
-        </Link>
+        </NavLink>
       </li>
       <li className="hover:text-[#ff4d30]">
         {" "}
-        <Link to="/login">Login</Link>
+        <NavLink
+          to="/login"
+          className={`${
+            activeRoute === "/login" && "!text-[#D70F64] font-bold  !bg-inherit"
+          }`}
+        >
+          Login
+        </NavLink>
       </li>
     </>
   );
@@ -68,9 +104,9 @@ const Navbar = () => {
         <div className="shadow-xl">
           <div className="max-w-[1280px] h-auto flex justify-between items-center bg-transparent lg:text-white mx-auto z-50 p-4 ">
             <div className="w-16">
-              <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+              <NavLink to="/" onClick={() => window.scrollTo(0, 0)}>
                 <img src={Logo} alt="logo-img" className="" />
-              </Link>
+              </NavLink>
             </div>
             <ul className="hidden lg:flex list-none text-black font-bold text-lg gap-5 ">
               {navLinks}
