@@ -68,6 +68,18 @@ const Navbar = () => {
       <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
+          to="/dashboard"
+          className={`${
+            activeRoute === "/dashboard" &&
+            "!text-[#04AA6D] font-bold  !bg-inherit"
+          }`}
+        >
+          DashBoard
+        </NavLink>
+      </li>
+      <li className="hover:text-[#04AA6D]">
+        {" "}
+        <NavLink
           to="/login"
           className={`${
             activeRoute === "/login" && "!text-[#04AA6D] font-bold  !bg-inherit"

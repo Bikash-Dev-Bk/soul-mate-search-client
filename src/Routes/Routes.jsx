@@ -10,6 +10,15 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import BiodataDetailsContainer from "../Pages/BiodataDetails/BiodataDetailsContainer/BiodataDetailsContainer";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Dashboard from "../Layouts/Dashboard";
+import AdminDashboard from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import ApprovedPremium from "../Pages/Dashboard/ApprovedPremium/ApprovedPremium";
+import ApprovedContactRequest from "../Pages/Dashboard/ApprovedContactRequest/ApprovedContactRequest";
+import EditBiodata from "../Pages/Dashboard/EditBiodata/EditBiodata";
+import ViewBiodata from "../Pages/Dashboard/ViewBiodata/ViewBiodata";
+import MyContactRequest from "../Pages/Dashboard/MyContactRequest/MyContactRequest";
+import FavouritesBiodata from "../Pages/Dashboard/FavouritesBiodata/FavouritesBiodata";
 
 export const router = createBrowserRouter([
   {
@@ -59,4 +68,46 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+  {
+    path: 'dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: 'editBioData',
+        element: <EditBiodata></EditBiodata>
+      },
+      {
+        path: 'viewBioData',
+        element: <ViewBiodata></ViewBiodata>
+      },
+
+      {
+        path: 'myContactRequest',
+        element: <MyContactRequest></MyContactRequest>
+      },
+      {
+        path: 'favouritesBioData',
+        element: <FavouritesBiodata></FavouritesBiodata>
+      },
+
+      // admin routes
+      {
+        path: 'adminDashboard',
+        element: <AdminDashboard></AdminDashboard>
+      },
+      {
+        path: 'manageUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: 'approvedPremium',
+        element: <ApprovedPremium></ApprovedPremium>
+      },
+      {
+        path: 'approvedContactRequest',
+        element: <ApprovedContactRequest></ApprovedContactRequest>
+      },
+    ]
+  }
 ]);
