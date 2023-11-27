@@ -9,11 +9,13 @@ import Biodatas from "../Pages/Biodatas/Biodatas/Biodatas";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import BiodataDetailsContainer from "../Pages/BiodataDetails/BiodataDetailsContainer/BiodataDetailsContainer";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
