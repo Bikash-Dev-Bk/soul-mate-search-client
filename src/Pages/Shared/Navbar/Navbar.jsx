@@ -131,9 +131,14 @@ const Navbar = () => {
 
         <div className="shadow-xl">
           <div className="max-w-[1280px] h-auto flex justify-between items-center bg-transparent lg:text-white mx-auto z-50 p-4 ">
-            <div className="w-16">
-              <NavLink to="/" onClick={() => window.scrollTo(0, 0)}>
-                <img src={Logo} alt="logo-img" className="" />
+            <div>
+              <NavLink to="/">
+                <div className="flex justify-center items-center">
+                  <img src={Logo} alt="logo-img" className="w-16" />
+                  <p className="text-black text-2xl font-bold">
+                    Soul Mate Search
+                  </p>
+                </div>
               </NavLink>
             </div>
             <ul className="hidden lg:flex items-center list-none text-black font-bold text-lg gap-5 ">
