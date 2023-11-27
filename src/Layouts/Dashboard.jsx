@@ -25,7 +25,7 @@ const Dashboard = () => {
     setActiveRoute(location.pathname);
   }, [location.pathname]);
 
-  const isAdmin = false;
+  const isAdmin = true;
 
   return (
     <div className="flex">
@@ -152,25 +152,23 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          <hr className="h-[2px] bg-white my-8" />
+
           <li className="mt-3 hover:text-white ">
-                <NavLink
-                  to="/"
-                  className={`${
-                    activeRoute === "/" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                    <FaHome/>
-                    Home
-                  </p>
-                </NavLink>
-              </li>
-          <li className="mt-3 flex gap-2 items-center hover:text-white">
-            <MdLogout />
-            <button onClick={handleLogOut}>Logout</button>
+            <NavLink to="/">
+              <p className="flex gap-2  items-center">
+                <FaHome />
+                Home
+              </p>
+            </NavLink>
           </li>
+
+          <button
+            onClick={handleLogOut}
+            className="w-3/4 mt-8 flex justify-center gap-2 items-center text-white font-semibold bg-red-500 rounded-lg border border-red-500 py-2 text-lg hover:bg-white hover:border-[#04AA6D] hover:text-[#04AA6D]"
+          >
+            <MdLogout />
+            Logout
+          </button>
         </ul>
       </div>
       {/* dashboard content */}
