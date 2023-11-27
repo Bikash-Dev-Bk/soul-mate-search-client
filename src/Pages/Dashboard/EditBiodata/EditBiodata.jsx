@@ -2,15 +2,66 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
+import Swal from "sweetalert2";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const EditBiodata = () => {
   const { user } = useAuth();
-  console.log("eidt", user.email);
+
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
     console.log(data);
+    // image upload to imgbb and then get an url
+    const imageFile = { image: data.profileImage[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    if (res.data.success) {
+      // now send the biodata data to the server with the image url
+      const biodata = {
+        name: data.name,
+        biodataType: data.biodataType,
+        profileImage: res.data.data.display_url,
+        dateOfBirth: data.dateOfBirth,
+        height: data.height,
+        weight: data.weight,
+        age: data.age,
+        occupation: data.occupation,
+        race: data.race,
+        fathersName: data.fathersName,
+        mothersName: data.mothersName,
+        permanentDivision: data.permanentDivision,
+        presentDivision: data.presentDivision,
+        expectedPartnerAge: data.expectedPartnerAge,
+        expectedPartnerHeight: data.expectedPartnerHeight,
+        expectedPartnerWeight: data.expectedPartnerWeight,
+        contactEmail: data.contactEmail,
+        mobileNumber: data.mobileNumber,
+      };
+      
+      const biodataRes = await axiosPublic.put(`/biodatas/${user?.email}`,biodata);
+
+      console.log(biodataRes.data);
+      if (biodataRes.data.modifiedCount > 0) {
+        // show success popup
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${data.name} is Updated Successfully!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
+    // console.log("with image url", res.data);
   };
 
   return (
@@ -400,7 +451,7 @@ const EditBiodata = () => {
 
         <div className="flex justify-center mb-16 mt-10">
           <button className="px-5 py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] ">
-            Save And Publish Now
+            Update
           </button>
         </div>
       </form>
