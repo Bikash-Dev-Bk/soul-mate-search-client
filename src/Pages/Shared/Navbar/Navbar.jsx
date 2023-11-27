@@ -4,8 +4,11 @@ import Logo from "../../../assets/logo/logo.png";
 import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import "./Navbar.css";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
+
   const [nav, setNav] = useState(false);
 
   const openNav = () => {
@@ -65,29 +68,42 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-      <li className="hover:text-[#04AA6D]">
-        {" "}
-        <NavLink
-          to="/dashboard"
-          className={`${
-            activeRoute === "/dashboard" &&
-            "!text-[#04AA6D] font-bold  !bg-inherit"
-          }`}
-        >
-          DashBoard
-        </NavLink>
-      </li>
-      <li className="hover:text-[#04AA6D]">
-        {" "}
-        <NavLink
-          to="/login"
-          className={`${
-            activeRoute === "/login" && "!text-[#04AA6D] font-bold  !bg-inherit"
-          }`}
-        >
-          Login
-        </NavLink>
-      </li>
+      {user ? (
+        <>
+          <li className="hover:text-[#04AA6D]">
+            {" "}
+            <NavLink
+              to="/dashboard"
+              className={`${
+                activeRoute === "/dashboard" &&
+                "!text-[#04AA6D] font-bold  !bg-inherit"
+              }`}
+            >
+              DashBoard
+            </NavLink>
+          </li>
+
+          <img
+            src={user?.photoURL}
+            alt="userPic"
+            // style={{ height: "40px" }}
+            className="flex justify-center items-center w-[60px] lg:w-[40px] rounded-full cursor-pointer border-2 border-[#04AA6D]"
+          />
+        </>
+      ) : (
+        <li className="hover:text-[#04AA6D]">
+          {" "}
+          <NavLink
+            to="/login"
+            className={`${
+              activeRoute === "/login" &&
+              "!text-[#04AA6D] font-bold  !bg-inherit"
+            }`}
+          >
+            Login
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -106,7 +122,7 @@ const Navbar = () => {
           >
             <GrClose />
           </div>
-          <ul className=" flex flex-col list-none text-center gap-12 text-2xl font-semibold">
+          <ul className=" flex flex-col list-none justify-center items-center text-center gap-12 text-2xl font-semibold">
             {navLinks}
           </ul>
         </div>
@@ -120,7 +136,7 @@ const Navbar = () => {
                 <img src={Logo} alt="logo-img" className="" />
               </NavLink>
             </div>
-            <ul className="hidden lg:flex list-none text-black font-bold text-lg gap-5 ">
+            <ul className="hidden lg:flex items-center list-none text-black font-bold text-lg gap-5 ">
               {navLinks}
             </ul>
 

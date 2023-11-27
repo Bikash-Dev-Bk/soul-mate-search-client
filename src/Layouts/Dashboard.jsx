@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaEye, FaEdit, FaHeart, FaUsersCog } from "react-icons/fa";
+import { FaEye, FaEdit, FaHeart, FaUsersCog, FaHome } from "react-icons/fa";
 import {
   MdOutlineWorkspacePremium,
   MdContactEmergency,
@@ -8,8 +8,16 @@ import {
 import { GiHelp } from "react-icons/gi";
 import { RxDashboard } from "react-icons/rx";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
+  const { logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   const location = useLocation();
   const [activeRoute, setActiveRoute] = useState("");
 
@@ -144,9 +152,24 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          <li className="mt-3 hover:text-white flex gap-2 items-center hover:text-white">
+          <hr className="h-[2px] bg-white my-8" />
+          <li className="mt-3 hover:text-white ">
+                <NavLink
+                  to="/"
+                  className={`${
+                    activeRoute === "/" &&
+                    "text-white font-bold  !bg-inherit "
+                  }`}
+                >
+                  <p className="flex gap-2  items-center">
+                    <FaHome/>
+                    Home
+                  </p>
+                </NavLink>
+              </li>
+          <li className="mt-3 flex gap-2 items-center hover:text-white">
             <MdLogout />
-            <button>Logout</button>
+            <button onClick={handleLogOut}>Logout</button>
           </li>
         </ul>
       </div>
