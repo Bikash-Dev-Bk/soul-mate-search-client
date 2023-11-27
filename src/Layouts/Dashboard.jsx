@@ -9,9 +9,10 @@ import { GiHelp } from "react-icons/gi";
 import { RxDashboard } from "react-icons/rx";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import HeroPages from "../components/HeroPages/HeroPages";
 
 const Dashboard = () => {
-  const { logOut } = useAuth();
+  const { user, logOut } = useAuth();
 
   const handleLogOut = () => {
     logOut()
@@ -172,7 +173,11 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="flex-1 ">
+      <div className="flex-1">
+        <HeroPages name="DashBoard"></HeroPages>
+        <div className="flex justify-center items-center h-64 p-4">
+        <h2 className="text-2xl"><span className="font-bold">{user.displayName}</span>, <span className="font-semibold">Welcome to Dashboard!!</span></h2>
+        </div>
         <Outlet></Outlet>
       </div>
     </div>
