@@ -174,10 +174,17 @@ const Dashboard = () => {
       </div>
       {/* dashboard content */}
       <div className="flex-1">
-        <HeroPages name="DashBoard"></HeroPages>
-        <div className="flex justify-center items-center h-64 p-4">
-        <h2 className="text-2xl"><span className="font-bold">{user.displayName}</span>, <span className="font-semibold">Welcome to Dashboard!!</span></h2>
-        </div>
+        {location.pathname == "/dashboard" && (
+          <div>
+            <HeroPages name="DashBoard"></HeroPages>
+            <div className="flex justify-center items-center h-64 p-4">
+              <h2 className="text-2xl">
+                <span className="font-bold">{user.displayName}</span>,{" "}
+                <span className="font-semibold">Welcome to Dashboard!!</span>
+              </h2>
+            </div>
+          </div>
+        )}
         <Outlet></Outlet>
       </div>
     </div>
