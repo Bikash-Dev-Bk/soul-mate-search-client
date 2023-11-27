@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className=" flex justify-center mt-24">
+      <div className=" flex justify-center my-24">
         <Spin size="large">
           <div className="content" />
         </Spin>

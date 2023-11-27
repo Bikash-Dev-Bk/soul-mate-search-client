@@ -25,13 +25,13 @@ const Dashboard = () => {
     setActiveRoute(location.pathname);
   }, [location.pathname]);
 
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
       {/* dashboard side bar */}
-      <div className="w-80 min-h-screen bg-[#04AA6D]">
-        <ul className="menu p-4">
+      <div className="w-full md:w-80 lg:min-h-screen bg-[#04AA6D]">
+        <ul className=" p-4 md:fixed">
           {isAdmin ? (
             <>
               <li className="mt-3 hover:text-white">
@@ -164,7 +164,7 @@ const Dashboard = () => {
 
           <button
             onClick={handleLogOut}
-            className="w-3/4 mt-8 flex justify-center gap-2 items-center text-white font-semibold bg-red-500 rounded-lg border border-red-500 py-2 text-lg hover:bg-white hover:border-[#04AA6D] hover:text-[#04AA6D]"
+            className="w-full lg:w-3/4 mt-8 flex justify-center gap-2 items-center  font-semibold  rounded-lg border  py-2 text-lg bg-white border-[#04AA6D] text-[#04AA6D] hover:bg-red-500 hover:text-white hover:border-red-500"
           >
             <MdLogout />
             Logout
@@ -172,7 +172,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 ">
         <Outlet></Outlet>
       </div>
     </div>
