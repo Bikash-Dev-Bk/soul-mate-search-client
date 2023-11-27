@@ -95,7 +95,7 @@ const SignUp = () => {
                 {...register("name", { required: true })}
                 name="name"
                 placeholder="Name"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.name && (
                 <span className="text-red-600 mt-2">Name is required</span>
@@ -110,7 +110,7 @@ const SignUp = () => {
                 type="text"
                 {...register("photoURL", { required: true })}
                 placeholder="Photo URL"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.photoURL && (
                 <span className="text-red-600 mt-2">Photo URL is required</span>
@@ -126,7 +126,7 @@ const SignUp = () => {
                 {...register("email", { required: true })}
                 name="email"
                 placeholder="Email"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.email && (
                 <span className="text-red-600 mt-2">Email is required</span>
@@ -146,7 +146,7 @@ const SignUp = () => {
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                 })}
                 placeholder="Password"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.password?.type === "required" && (
                 <p className="text-red-600 mt-2">Password is required</p>
@@ -170,18 +170,18 @@ const SignUp = () => {
             </div>
 
             <div className="  mt-6">
-              <button className="w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64]">
+              <button className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D]">
                 Register
               </button>
             </div>
             <p className="flex items-center justify-center space-x-2 my-2">
               <span className="h-px bg-gray-400 w-14"></span>
-              <span className="font-normal text-[#D70F64]">Or Login with</span>
+              <span className="font-normal text-[#04AA6D]">Or Login with</span>
               <span className="h-px bg-gray-400 w-14"></span>
             </p>
             <button
               onClick={handleSignInWithGoogle}
-              className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#D70F64]  hover:bg-[#D70F64] hover:text-white"
+              className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#04AA6D]  hover:bg-[#04AA6D] hover:text-white"
             >
               <FcGoogle className="text-2xl" />{" "}
               <span className="ml-2">Google</span>{" "}
@@ -189,7 +189,7 @@ const SignUp = () => {
           </form>
           <p className="text-center mt-3">
             Already have an account?
-            <Link to="/login" className="text-[#D70F64] font-bold ml-2">
+            <Link to="/login" className="text-[#04AA6D] font-bold ml-2">
               Log in
             </Link>
           </p>

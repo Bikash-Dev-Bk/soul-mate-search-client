@@ -9,7 +9,6 @@ const BioDataFilter = () => {
     <div>
       <h2>Filter Bio Data</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        
         {/* biodata type */}
         <div className="form-control w-full my-6">
           <label className="label">
@@ -18,7 +17,7 @@ const BioDataFilter = () => {
           <select
             defaultValue="default"
             {...register("category", { required: true })}
-            className="select select-bordered w-full text-lg py-2 border-2 border-[#D70F64] focus:outline-none mt-2"
+            className="select select-bordered w-full text-lg py-2 border-2 border-[#04AA6D] focus:outline-none mt-2"
           >
             <option disabled value="default">
               Select a category
@@ -36,7 +35,7 @@ const BioDataFilter = () => {
           <select
             defaultValue="default"
             {...register("category", { required: true })}
-            className="select select-bordered w-full text-lg py-2 border-2 border-[#D70F64] focus:outline-none mt-2"
+            className="select select-bordered w-full text-lg py-2 border-2 border-[#04AA6D] focus:outline-none mt-2"
           >
             <option disabled value="default">
               Select a category
@@ -58,7 +57,7 @@ const BioDataFilter = () => {
           <select
             defaultValue="default"
             {...register("category", { required: true })}
-            className="select select-bordered w-full text-lg py-2 border-2 border-[#D70F64] focus:outline-none mt-2"
+            className="select select-bordered w-full text-lg py-2 border-2 border-[#04AA6D] focus:outline-none mt-2"
           >
             <option disabled value="default">
               Select a category

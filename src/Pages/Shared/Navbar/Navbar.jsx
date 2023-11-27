@@ -25,52 +25,52 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={`${
-            activeRoute === "/" && "!text-[#D70F64] font-bold  !bg-inherit"
+            activeRoute === "/" && "!text-[#04AA6D] font-bold  !bg-inherit"
           }`}
         >
           Home
         </NavLink>
       </li>
-      <li className="hover:text-[#ff4d30]">
+      <li className="hover:text-[#04AA6D]">
         <NavLink
           to="/biodatas"
           className={`${
             activeRoute === "/biodatas" &&
-            "!text-[#D70F64] font-bold  !bg-inherit"
+            "!text-[#04AA6D] font-bold  !bg-inherit"
           }`}
         >
           Biodatas
         </NavLink>
       </li>
-      <li className="hover:text-[#ff4d30]">
+      <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
           to="/about"
           className={`${
-            activeRoute === "/about" && "!text-[#D70F64] font-bold  !bg-inherit"
+            activeRoute === "/about" && "!text-[#04AA6D] font-bold  !bg-inherit"
           }`}
         >
           About
         </NavLink>
       </li>
-      <li className="hover:text-[#ff4d30]">
+      <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
           to="/contact"
           className={`${
             activeRoute === "/contact" &&
-            "!text-[#D70F64] font-bold  !bg-inherit"
+            "!text-[#04AA6D] font-bold  !bg-inherit"
           }`}
         >
           Contact
         </NavLink>
       </li>
-      <li className="hover:text-[#ff4d30]">
+      <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
           to="/login"
           className={`${
-            activeRoute === "/login" && "!text-[#D70F64] font-bold  !bg-inherit"
+            activeRoute === "/login" && "!text-[#04AA6D] font-bold  !bg-inherit"
           }`}
         >
           Login
@@ -90,7 +90,7 @@ const Navbar = () => {
         >
           <div
             onClick={openNav}
-            className="text-3xl absolute top-8 right-5 cursor-pointer transition-all duration-300 hover:text-[#ff4d30]"
+            className="text-3xl absolute top-8 right-5 cursor-pointer transition-all duration-300 hover:text-[#04AA6D]"
           >
             <GrClose />
           </div>
@@ -114,7 +114,7 @@ const Navbar = () => {
 
             {/* mobile */}
             <div
-              className="text-3xl flex lg:hidden cursor-pointer transition-all duration-300 hover:text-[#ff4d30] "
+              className="text-3xl flex lg:hidden cursor-pointer transition-all duration-300 hover:text-[#04AA6D] "
               onClick={openNav}
             >
               <FaBars />

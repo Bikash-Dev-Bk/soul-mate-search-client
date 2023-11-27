@@ -14,7 +14,7 @@ const About = () => {
       <div className="max-w-[1280px] mx-auto my-24 p-5 ">
         <div className="flex gap-10 flex-col md:flex-row">
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-[#ff8080]">Who We Are</h3>
+            <h3 className="text-2xl font-bold text-[#04AA6D]">Who We Are</h3>
 
             <p className="text-lg text-justify mt-4">
               Welcome to <span className="font-semibold">Soul Mate Search</span>
@@ -43,7 +43,7 @@ const About = () => {
 
         <div className="flex gap-10 flex-col md:flex-row-reverse mt-48">
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-[#ff8080]">Our Mission</h3>
+            <h3 className="text-2xl font-bold text-[#04AA6D]">Our Mission</h3>
 
             <p className="text-lg text-justify mt-4">
               Our mission is simple yet profound: to create a platform where
@@ -52,7 +52,7 @@ const About = () => {
               life companion, and we are dedicated to facilitating this
               beautiful journey.
             </p>
-            <h3 className="text-2xl font-bold text-[#ff8080] mt-12">
+            <h3 className="text-2xl font-bold text-[#04AA6D] mt-12">
               Our Story
             </h3>
 
@@ -73,12 +73,12 @@ const About = () => {
           </div>
         </div>
         <div className="mt-20">
-          <h3 className="text-2xl font-bold text-[#ff8080] ">
+          <h3 className="text-2xl font-bold text-[#04AA6D] ">
             Join Us on This Journey
           </h3>
 
           <p className="text-lg text-justify mt-4">
-            Whether you're embarking on the search for love or have already
+            Whether you are embarking on the search for love or have already
             found your soulmate through <span className="font-semibold">Soul Mate Search</span>, we invite
             you to be part of our vibrant and growing community. Join us in
             celebrating love, connections, and the beautiful stories that unfold

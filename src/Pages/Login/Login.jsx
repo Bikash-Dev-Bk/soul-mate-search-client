@@ -111,7 +111,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Type your email"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
                 required
               />
             </div>
@@ -124,7 +124,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Type your password"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
                 required
               />
             </div>
@@ -137,26 +137,28 @@ const Login = () => {
                 type="text"
                 name="captcha"
                 placeholder="Type the captcha above"
-                className="w-full text-lg py-2 border-b-2 border-[#D70F64] focus:outline-none"
+                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
             </div>
 
             {passwordError && <p className="text-red-500">{passwordError}</p>}
 
             <div className=" mt-5 ">
-              <button disabled={disabled} className="w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64]"
+              <button
+                disabled={disabled}
+                className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D]"
               >
                 Login
               </button>
             </div>
             <p className="flex items-center justify-center space-x-2 my-2">
               <span className="h-px bg-gray-400 w-14"></span>
-              <span className="font-normal text-[#D70F64]">Or Login with</span>
+              <span className="font-normal text-[#04AA6D]">Or Login with</span>
               <span className="h-px bg-gray-400 w-14"></span>
             </p>
             <button
               onClick={handleSignInWithGoogle}
-              className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#D70F64]  hover:bg-[#D70F64] hover:text-white"
+              className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#04AA6D]  hover:bg-[#04AA6D] hover:text-white"
             >
               <FcGoogle className="text-2xl" />{" "}
               <span className="ml-2">Google</span>{" "}
@@ -164,7 +166,7 @@ const Login = () => {
           </form>
           <p className="text-center mt-3">
             New in Soul Mate Search?
-            <Link to="/signup" className="text-[#D70F64] ml-2 font-bold">
+            <Link to="/signup" className="text-[#04AA6D] ml-2 font-bold">
               Signup
             </Link>
           </p>

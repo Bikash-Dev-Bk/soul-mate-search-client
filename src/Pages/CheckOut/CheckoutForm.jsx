@@ -13,8 +13,6 @@ const CheckoutForm = ({ biodata }) => {
 
   const totalPrice = 500;
 
-  
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -40,22 +38,19 @@ const CheckoutForm = ({ biodata }) => {
       console.log("payment method", paymentMethod);
       setError("");
     }
-
-    
   };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-[500px] mx-auto">
-      
       <div className="my-4 max-w-screen-xl mx-auto ">
         <label
-          className="block text-[#D70F64] font-bold mb-2"
+          className="block text-[#04AA6D] font-bold mb-2"
           htmlFor="food_name"
         >
           Bio Data Id
         </label>
         <input
-          className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#D70F64]"
+          className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#04AA6D]"
           name="food_name"
           type="text"
           defaultValue={biodata.biodataId}
@@ -64,13 +59,13 @@ const CheckoutForm = ({ biodata }) => {
       </div>
       <div className="my-4 max-w-screen-xl mx-auto ">
         <label
-          className="block text-[#D70F64] font-bold mb-2"
+          className="block text-[#04AA6D] font-bold mb-2"
           htmlFor="food_name"
         >
           My Bio Data Id
         </label>
         <input
-          className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#D70F64]"
+          className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#04AA6D]"
           name="food_name"
           type="text"
           defaultValue={biodata.biodataId}
@@ -79,22 +74,22 @@ const CheckoutForm = ({ biodata }) => {
       </div>
       <div className="my-4 max-w-screen-xl mx-auto ">
         <label
-          className="block text-[#D70F64] font-bold mb-2"
+          className="block text-[#04AA6D] font-bold mb-2"
           htmlFor="food_name"
         >
           My Email
         </label>
         <input
-          className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#D70F64]"
+          className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#04AA6D]"
           name="food_name"
           type="text"
           defaultValue={user?.email}
           required
         />
       </div>
-      <p className="text-[#D70F64] font-bold">Stripe Card Number</p>
+      <p className="text-[#04AA6D] font-bold">Stripe Card Number</p>
       <CardElement
-      className=" mb-10 mt-3 ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent "
+        className=" mb-10 mt-3 ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent "
         options={{
           style: {
             base: {
@@ -111,7 +106,7 @@ const CheckoutForm = ({ biodata }) => {
         }}
       />
       <button
-        className="btn rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64] py-2 px-4 my-4"
+        className="btn rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] py-2 px-4 my-4"
         type="submit"
         disabled={!stripe || !clientSecret}
       >

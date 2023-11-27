@@ -30,7 +30,7 @@ const BiodataDetails = ({ biodata }) => {
         <img
           src={profileImage}
           alt=""
-          className="w-full md:w-1/2 rounded-xl border-2 border-[#D70F64] "
+          className="w-full md:w-1/2 rounded-xl border-2 border-[#04AA6D] "
         />
         <div className="font-semibold mt-5 md:mt-0">
           <h2 className="font-bold">Name: {name}</h2>
@@ -40,8 +40,8 @@ const BiodataDetails = ({ biodata }) => {
           <p>Gender: {biodataType}</p>
           <p>Date Of Birth: {dateOfBirth}</p>
           <p>Occupation: {occupation}</p>
-          <button className="w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64] mt-4">
-          Add to Favourite
+          <button className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
+            Add to Favourite
           </button>
         </div>
       </div>
@@ -68,11 +68,11 @@ const BiodataDetails = ({ biodata }) => {
         </div>
       </div>
       <div className="">
-      <Link to={`/checkout/${biodataId}`}>
-        <button className="w-1/2 md:w-full py-3 rounded-lg  text-white bg-[#D70F64] hover:bg-transparent border-2 border-[#D70F64] hover:text-[#D70F64] mt-4">
-          Request Contact Information
-        </button>
-      </Link>
+        <Link to={`/checkout/${biodataId}`}>
+          <button className="w-1/2 md:w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
+            Request Contact Information
+          </button>
+        </Link>
       </div>
     </div>
   );
