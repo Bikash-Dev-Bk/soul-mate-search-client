@@ -45,17 +45,30 @@ const EditBiodata = () => {
         contactEmail: data.contactEmail,
         mobileNumber: data.mobileNumber,
       };
-      
-      const biodataRes = await axiosPublic.put(`/biodatas/${user?.email}`,biodata);
 
-      console.log(biodataRes.data);
-      if (biodataRes.data.modifiedCount > 0) {
-        // show success popup
+      const biodataRes = await axiosPublic.put(
+        `/biodatas/${user?.email}`,
+        biodata
+      );
+
+      // console.log(biodataRes.data);
+      // if (biodataRes.data.modifiedCount > 0) {
+      //   reset();
+      //   Swal.fire({
+      //     position: "center",
+      //     icon: "success",
+      //     title: `${data.name} is Updated Successfully!`,
+      //     showConfirmButton: false,
+      //     timer: 1500,
+      //   });
+      // }
+
+      if (biodataRes.data.acknowledged) {
         reset();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `${data.name} is Updated Successfully!`,
+          title: `${data.name}'s Biodata is Added in the Biodatas!`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -451,7 +464,7 @@ const EditBiodata = () => {
 
         <div className="flex justify-center mb-16 mt-10">
           <button className="px-5 py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] ">
-            Update
+            Save And Publish
           </button>
         </div>
       </form>
