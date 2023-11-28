@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const BiodataDetails = ({ biodata }) => {
+
+  const { user } = useAuth();
+
   const {
     biodataId,
     name,
@@ -24,6 +30,49 @@ const BiodataDetails = ({ biodata }) => {
     contactEmail,
   } = biodata;
 
+  const axiosPublic = useAxiosPublic()
+
+  const handleAddToFavourite = () => {
+    const favBioData = {
+      email: user.email,
+      biodataId,
+      name,
+      biodataType,
+      profileImage,
+      dateOfBirth,
+      age,
+      occupation,
+      weight,
+      height,
+      race,
+      fathersName,
+      mothersName,
+      permanentDivision,
+      presentDivision,
+      expectedPartnerAge,
+      expectedPartnerHeight,
+      expectedPartnerWeight,
+      mobileNumber,
+      contactEmail,
+    };
+
+    axiosPublic.post("/favourites", favBioData)
+    .then((res) => {
+      
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${name} added to your Favourite List`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        
+      }
+    });
+  };
+
+
   return (
     <div className="shadow-2xl rounded-xl p-5">
       <div className="flex flex-col md:flex-row justify-center md:justify-between">
@@ -40,7 +89,10 @@ const BiodataDetails = ({ biodata }) => {
           <p>Gender: {biodataType}</p>
           <p>Date Of Birth: {dateOfBirth}</p>
           <p>Occupation: {occupation}</p>
-          <button className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
+          <button
+            onClick={()=>handleAddToFavourite()}
+            className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
+          >
             Add to Favourite
           </button>
         </div>
