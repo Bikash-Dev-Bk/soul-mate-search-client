@@ -14,6 +14,20 @@ const ManageUsers = () => {
     },
   });
 
+  const handleMakeAdmin = (biodata) => {
+    axiosPublic.patch(`/biodatas/admin/${biodata.contactEmail}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `Now ${biodata.name} is an Admin!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
 
   const handleMakePremium = (biodata) => {
     axiosPublic
@@ -51,7 +65,6 @@ const ManageUsers = () => {
               <th className="px-5 py-3 border-b-2 border-gray-500 bg-gray-200 text-left text-md  text-gray-700 uppercase tracking-wider">
                 Make Premium
               </th>
-              
             </tr>
           </thead>
           <tbody>
@@ -63,27 +76,30 @@ const ManageUsers = () => {
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
                   {biodata.contactEmail}
                 </td>
-                
+
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  <button 
-                  className="hover:text-white text-[#04AA6D] hover:bg-[#04AA6D] bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
-                  
-                //   onClick={() => handleMakeAdmin(biodata)}
-                  >
-                    Admin
-                  </button>
+                  {biodata.isAdmin ? (
+                    <p className="text-[#04AA6D] px-4">Admin</p>
+                  ) : (
+                    <button
+                      className="hover:text-white text-[#04AA6D] hover:bg-[#04AA6D] bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
+                      onClick={() => handleMakeAdmin(biodata)}
+                    >
+                      Admin
+                    </button>
+                  )}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  {
-                    biodata.isPremium? <p className="text-[#04AA6D]">Premium Member</p> :
-                    <button 
-                    className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
-                    
-                    onClick={() => handleMakePremium(biodata)}
+                  {biodata.isPremium ? (
+                    <p className="text-[#04AA6D]">Premium Member</p>
+                  ) : (
+                    <button
+                      className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
+                      onClick={() => handleMakePremium(biodata)}
                     >
                       Premium
                     </button>
-                  }
+                  )}
                 </td>
               </tr>
             ))}
