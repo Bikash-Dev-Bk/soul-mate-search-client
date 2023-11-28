@@ -10,6 +10,7 @@ import { RxDashboard } from "react-icons/rx";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import HeroPages from "../components/HeroPages/HeroPages";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
@@ -26,7 +27,7 @@ const Dashboard = () => {
     setActiveRoute(location.pathname);
   }, [location.pathname]);
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="max-w-[1550px] mx-auto flex flex-col md:flex-row">
