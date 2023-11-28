@@ -1,6 +1,6 @@
 [
   {
-    "biodataId": "1",
+    "biodataId": 1,
     "profileImage": "https://i.ibb.co/F5TT0Qr/person5.jpg",
     "biodataType": "Male",
     "name": "John Doe",
@@ -18,10 +18,11 @@
     "expectedPartnerHeight": "160",
     "expectedPartnerWeight": "60",
     "contactEmail": "john.doe@example.com",
-    "mobileNumber": "1234567890"
+    "mobileNumber": "1234567890",
+    "isPremium": true
   },
   {
-    "biodataId": "2",
+    "biodataId": 2,
     "biodataType": "Female",
     "profileImage": "https://i.ibb.co/48zpcv3/sarah.jpg",
     "name": "Jane Smith",
@@ -39,10 +40,11 @@
     "expectedPartnerHeight": "175",
     "expectedPartnerWeight": "70",
     "contactEmail": "jane.smith@example.com",
-    "mobileNumber": "9876543210"
+    "mobileNumber": "9876543210",
+    "isPremium": true
   },
   {
-    "biodataId": "3",
+    "biodataId": 3,
     "profileImage": "https://i.ibb.co/7SycXV4/person2.jpg",
     "biodataType": "Male",
     "name": "David Johnson",
@@ -60,10 +62,11 @@
     "expectedPartnerHeight": "168",
     "expectedPartnerWeight": "65",
     "contactEmail": "david.johnson@example.com",
-    "mobileNumber": "5551234567"
+    "mobileNumber": "5551234567",
+    "isPremium": true
   },
   {
-    "biodataId": "4",
+    "biodataId": 4,
     "profileImage": "https://i.ibb.co/FYNhDXV/person8.jpg",
     "biodataType": "Female",
     "name": "Emily Davis",
@@ -81,10 +84,11 @@
     "expectedPartnerHeight": "155",
     "expectedPartnerWeight": "48",
     "contactEmail": "emily.davis@example.com",
-    "mobileNumber": "1237894560"
+    "mobileNumber": "1237894560",
+    "isPremium": true
   },
   {
-    "biodataId": "5",
+    "biodataId": 5,
     "profileImage": "https://i.ibb.co/pW7Ph69/person7.jpg",
     "biodataType": "Male",
     "name": "Daniel Brown",
@@ -102,10 +106,11 @@
     "expectedPartnerHeight": "170",
     "expectedPartnerWeight": "72",
     "contactEmail": "daniel.brown@example.com",
-    "mobileNumber": "9870123456"
+    "mobileNumber": "9870123456",
+    "isPremium": true
   },
   {
-    "biodataId": "6",
+    "biodataId": 6,
     "profileImage": "https://i.ibb.co/10CF6Rm/person4.jpg",
     "biodataType": "Female",
     "name": "Sophia Lee",
@@ -123,6 +128,7 @@
     "expectedPartnerHeight": "165",
     "expectedPartnerWeight": "55",
     "contactEmail": "sophia.lee@example.com",
-    "mobileNumber": "1234567890"
+    "mobileNumber": "1234567890",
+    "isPremium": true
   }
 ]
