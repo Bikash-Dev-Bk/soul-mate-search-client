@@ -1,11 +1,58 @@
-
+import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const AdminDashboard = () => {
-    return (
-        <div>
-            <h2>AdminDashboard</h2>
+  const [biodatas, setBiodatas] = useState([]);
+  const [maleBiodatas, setMaleBiodatas] = useState([]);
+  const [femaleBiodatas, setFemaleBiodatas] = useState([]);
+  const [premiumBiodatas, setPremiumBiodatas] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/biodatas")
+      .then((res) => res.json())
+      .then((data) => {
+        
+        const male = data.filter((biodata) => biodata.biodataType === "Male");
+        const female = data.filter((biodata) => biodata.biodataType === "Female");
+        const premium = data.filter((biodata) => biodata.isPremium === true);
+
+        setMaleBiodatas(male);
+        setFemaleBiodatas(female);
+        setPremiumBiodatas(premium);
+        setBiodatas(data);
+      });
+  }, []);
+
+  return (
+    <div>
+      <DashBoardHeroPages name="Admin Dashboard"></DashBoardHeroPages>
+      <div className="max-w-[1280px] mx-auto my-12 p-5">
+        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+          <div className="flex flex-col justify-center items-center text-center bg-[#04AA6D] p-5 rounded-lg text-white">
+            <h2 className="text-xl">Total Biodata</h2>
+            <p className="text-3xl font-bold">{biodatas.length}</p>
+          </div>
+          <div className="flex flex-col justify-center items-center text-center bg-[#04AA6D] p-5 rounded-lg text-white">
+            <h2 className="text-xl">Male Biodata</h2>
+            <p className="text-3xl font-bold">{maleBiodatas.length}</p>
+          </div>
+          <div className="flex flex-col justify-center items-center text-center bg-[#04AA6D] p-5 rounded-lg text-white">
+            <h2 className="text-xl">Female Biodata</h2>
+            <p className="text-3xl font-bold">{femaleBiodatas.length}</p>
+          </div>
+          <div className="flex flex-col justify-center items-center text-center bg-[#04AA6D] p-5 rounded-lg text-white">
+            <h2 className="text-xl">Premium Biodata</h2>
+            <p className="text-3xl font-bold">{premiumBiodatas.length}</p>
+          </div>
+          <div className="flex flex-col justify-center items-center text-center bg-[#04AA6D] p-5 rounded-lg text-white">
+            <h2 className="text-xl">Total Revenue</h2>
+            <p className="text-3xl font-bold">{}</p>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default AdminDashboard;

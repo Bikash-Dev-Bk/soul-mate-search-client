@@ -26,7 +26,7 @@ const Dashboard = () => {
     setActiveRoute(location.pathname);
   }, [location.pathname]);
 
-  const isAdmin = false;
+  const isAdmin = true;
 
   return (
     <div className="max-w-[1550px] mx-auto flex flex-col md:flex-row">
