@@ -1,11 +1,14 @@
-
+import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
 
 const MyContactRequest = () => {
-    return (
-        <div>
-            <h2>MyContactRequest</h2>
-        </div>
-    );
+  return (
+    <div>
+      <DashBoardHeroPages name="My Contact Request"></DashBoardHeroPages>
+      <div className="max-w-[1280px] mx-auto my-12 p-5">
+        
+      </div>
+    </div>
+  );
 };
 
 export default MyContactRequest;
