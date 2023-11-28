@@ -39,7 +39,7 @@ const ApprovedPremium = () => {
 
   return (
     <div>
-      <DashBoardHeroPages name="Manage Users"></DashBoardHeroPages>
+      <DashBoardHeroPages name="Approved Premium"></DashBoardHeroPages>
       <div className="max-w-[1280px] mx-auto my-12 p-5">
         <table className="w-full leading-normal font-semibold my-12 p-12">
           <thead className="font-bold">

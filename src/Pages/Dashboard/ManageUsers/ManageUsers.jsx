@@ -1,17 +1,36 @@
-import { useEffect } from "react";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
-import { useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageUsers = () => {
-  const [biodatas, setBiodatas] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/biodatas")
-      .then((res) => res.json())
-      .then((data) => {
-        setBiodatas(data);
+  const { data: biodatas = [], refetch } = useQuery({
+    queryKey: ["biodatas"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/biodatas");
+      return res.data;
+    },
+  });
+
+
+  const handleMakePremium = (biodata) => {
+    axiosPublic
+      .patch(`/biodatas/premium/${biodata.contactEmail}`)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Now ${biodata.name} Premium Member!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
-  }, []);
+  };
 
   return (
     <div>
@@ -55,13 +74,16 @@ const ManageUsers = () => {
                   </button>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  <button 
-                  className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
-                  
-                //   onClick={() => handleMakePremium(biodata)}
-                  >
-                    Premium
-                  </button>
+                  {
+                    biodata.isPremium? <p className="text-[#04AA6D]">Premium Member</p> :
+                    <button 
+                    className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
+                    
+                    onClick={() => handleMakePremium(biodata)}
+                    >
+                      Premium
+                    </button>
+                  }
                 </td>
               </tr>
             ))}
