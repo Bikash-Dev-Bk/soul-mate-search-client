@@ -40,7 +40,7 @@ const ViewBiodata = () => {
           <img
             src={myBiodata.profileImage}
             alt=""
-            className="w-full lg:w-1/4 rounded-xl border-2 border-[#04AA6D] "
+            className="w-full lg:w-1/3 rounded-xl border-2 border-[#04AA6D] "
           />
           <div>
             <div className="grid justify-between gap-5 grid-cols-1 md:grid-cols-2  ">
