@@ -15,8 +15,8 @@ const ViewBiodata = () => {
       return res.data;
     },
   });
-
-  const handleMakePremium = (myBiodata) => {
+ 
+  const handleMakePremiumRequest = (myBiodata) => {
 
     axiosPublic.patch(`/biodatas/premiumRequests/${myBiodata.contactEmail}`)
     .then((res) => {
@@ -88,7 +88,7 @@ const ViewBiodata = () => {
               </div>
             </div>
             <button
-              onClick={() => handleMakePremium(myBiodata)}
+              onClick={() => handleMakePremiumRequest(myBiodata)}
               className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
             >
               Make Biodata To Premium
