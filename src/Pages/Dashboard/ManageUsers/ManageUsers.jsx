@@ -47,18 +47,18 @@ const ManageUsers = () => {
                 
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
                   <button 
-                  className="text-red-600 hover:text-gray-300 bg-gray-300 hover:bg-red-600 p-4 rounded-full"
+                  className="hover:text-white text-[#04AA6D] hover:bg-[#04AA6D] bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
                   
-                //   onClick={() => handleDeletebiodata(biodata)}
+                //   onClick={() => handleMakeAdmin(biodata)}
                   >
                     Admin
                   </button>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
                   <button 
-                  className="text-red-600 hover:text-gray-300 bg-gray-300 hover:bg-red-600 p-4 rounded-full"
+                  className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
                   
-                //   onClick={() => handleDeletebiodata(biodata)}
+                //   onClick={() => handleMakePremium(biodata)}
                   >
                     Premium
                   </button>
