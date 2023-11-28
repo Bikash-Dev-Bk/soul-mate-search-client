@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li>
+      <li className="hover:text-[#04AA6D]">
         <NavLink
           to="/"
           className={`${
