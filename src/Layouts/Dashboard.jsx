@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col md:flex-row">
       {/* dashboard side bar */}
-      <div className="w-full md:w-80 lg:min-h-screen bg-[#04AA6D]">
+      <div className="w-full md:w-64 lg:w-80 lg:min-h-screen bg-[#04AA6D]">
         <ul className=" p-4 md:fixed">
           {isAdmin ? (
             <>
