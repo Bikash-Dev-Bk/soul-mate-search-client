@@ -5,10 +5,11 @@ const PremiumMember = () => {
   const [premiumMember, setPremiumMember] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/premiums")
+    fetch("http://localhost:5000/biodatas")
       .then((res) => res.json())
       .then((data) => {
-        const sortedData = data.sort((a, b) => a.age - b.age);
+        const premium = data.filter((biodata) => biodata.isPremium === true);
+        const sortedData = premium.sort((a, b) => a.age - b.age);
         setPremiumMember(sortedData)
     });
   }, []);
