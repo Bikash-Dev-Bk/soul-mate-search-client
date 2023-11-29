@@ -17,21 +17,23 @@ const ViewBiodata = () => {
       return res.data;
     },
   });
- 
-  const handleMakePremiumRequest = (myBiodata) => {
 
-    axiosSecure.patch(`/biodatas/premiumRequests/${myBiodata.contactEmail}`)
-    .then((res) => {
-      if (res.data.modifiedCount > 0) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Successfully Requested for Premium!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+  console.log("myBiodata", myBiodata);
+
+  const handleMakePremiumRequest = (myBiodata) => {
+    axiosSecure
+      .patch(`/biodatas/premiumRequests/${myBiodata.contactEmail}`)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Successfully Requested for Premium!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -89,12 +91,14 @@ const ViewBiodata = () => {
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => handleMakePremiumRequest(myBiodata)}
-              className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
-            >
-              Make Biodata To Premium
-            </button>
+            {myBiodata.isPremium === true || (
+              <button
+                onClick={() => handleMakePremiumRequest(myBiodata)}
+                className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
+              >
+                Make Biodata To Premium
+              </button>
+            )}
           </div>
         </div>
       </div>
