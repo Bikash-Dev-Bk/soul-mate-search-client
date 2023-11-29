@@ -14,7 +14,7 @@ const CheckOut = () => {
   const userBiodata = useLoaderData();
 
   const { data: myBiodata = [] } = useQuery({
-    queryKey: ["menu"],
+    queryKey: ["myBiodata"],
     queryFn: async () => {
       const res = await axiosPublic.get(`biodata/${user?.email}`);
       return res.data;

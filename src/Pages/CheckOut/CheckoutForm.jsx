@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import HeroPages from "../../components/HeroPages/HeroPages";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ userBiodata, myBiodata }) => {
   const [error, setError] = useState("");
@@ -10,9 +13,23 @@ const CheckoutForm = ({ userBiodata, myBiodata }) => {
   const [transactionId, setTransactionId] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
+  const navigate = useNavigate();
+
   const totalPrice = 500;
+
+  useEffect(() => {
+    if (totalPrice > 0) {
+      axiosSecure
+        .post("/create-payment-intent", { price: totalPrice })
+        .then((res) => {
+          // console.log(res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+        });
+    }
+  }, [axiosSecure, totalPrice]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,6 +55,67 @@ const CheckoutForm = ({ userBiodata, myBiodata }) => {
     } else {
       console.log("payment method", paymentMethod);
       setError("");
+    }
+
+    // confirm payment
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            email: user?.email || "anonymous",
+            name: user?.displayName || "anonymous",
+          },
+        },
+      });
+
+    if (confirmError) {
+      console.log("confirm error");
+    } else {
+      console.log("payment intent", paymentIntent);
+      if (paymentIntent.status === "succeeded") {
+        console.log("transaction id", paymentIntent.id);
+        setTransactionId(paymentIntent.id);
+
+        // now save the payment in the database
+        const payment = {
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          myBiodataId: myBiodata.biodataId,
+          myBiodataName: myBiodata.name,
+          myBiodataEmail: myBiodata.contactEmail,
+          userBiodataId: userBiodata.biodataId,
+          userBiodataName: userBiodata.name,
+          userBiodataMobile: userBiodata.mobileNumber,
+          userBiodataEmail: userBiodata.contactEmail,
+          status: "pending",
+        };
+
+        const res = await axiosSecure.post("/payments", payment);
+        console.log("payment saved", res.data);
+
+        if (res.data?.paymentResult?.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thank you for Payment!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/myContactRequest");
+        }
+
+        if (res.data?.paymentResult?.insertedId===null) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You have already paid for this user!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/myContactRequest");
+        }
+      }
     }
   };
 
@@ -112,13 +190,6 @@ const CheckoutForm = ({ userBiodata, myBiodata }) => {
               },
             }}
           />
-          <button
-            className="btn rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] py-2 px-4 my-4"
-            type="submit"
-            disabled={!stripe || !clientSecret}
-          >
-            Submit
-          </button>
           <p className="text-red-600">{error}</p>
           {transactionId && (
             <p className="text-green-600">
@@ -126,6 +197,13 @@ const CheckoutForm = ({ userBiodata, myBiodata }) => {
               Your transaction id: {transactionId}
             </p>
           )}
+          <button
+            className="btn rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] py-2 px-4 my-4"
+            type="submit"
+            disabled={!stripe || !clientSecret}
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>
