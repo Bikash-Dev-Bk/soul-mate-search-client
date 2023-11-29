@@ -19,6 +19,7 @@ import EditBiodata from "../Pages/Dashboard/EditBiodata/EditBiodata";
 import ViewBiodata from "../Pages/Dashboard/ViewBiodata/ViewBiodata";
 import MyContactRequest from "../Pages/Dashboard/MyContactRequest/MyContactRequest";
 import FavouritesBiodata from "../Pages/Dashboard/FavouritesBiodata/FavouritesBiodata";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <CheckOut></CheckOut>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodatas/${params.id}`),
       },
@@ -70,44 +75,63 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: 'dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
-        path: 'editBioData',
-        element: <EditBiodata></EditBiodata>
+        path: "editBioData",
+        element: <EditBiodata></EditBiodata>,
       },
       {
-        path: 'viewBioData',
-        element: <ViewBiodata></ViewBiodata>
-      },
-
-      {
-        path: 'myContactRequest',
-        element: <MyContactRequest></MyContactRequest>
+        path: "viewBioData",
+        element: <ViewBiodata></ViewBiodata>,
       },
       {
-        path: 'favouritesBioData',
-        element: <FavouritesBiodata></FavouritesBiodata>
+        path: "myContactRequest",
+        element: <MyContactRequest></MyContactRequest>,
+      },
+      {
+        path: "favouritesBioData",
+        element: <FavouritesBiodata></FavouritesBiodata>,
       },
 
       // admin routes
       {
-        path: 'adminDashboard',
-        element: <AdminDashboard></AdminDashboard>
+        path: "adminDashboard",
+        element: (
+          <AdminRoute>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        path: "manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'approvedPremium',
-        element: <ApprovedPremium></ApprovedPremium>
+        path: "approvedPremium",
+        element: (
+          <AdminRoute>
+            <ApprovedPremium></ApprovedPremium>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'approvedContactRequest',
-        element: <ApprovedContactRequest></ApprovedContactRequest>
+        path: "approvedContactRequest",
+        element: (
+          <AdminRoute>
+            <ApprovedContactRequest></ApprovedContactRequest>
+          </AdminRoute>
+        ),
       },
-    ]
-  }
+    ],
+  },
 ]);
