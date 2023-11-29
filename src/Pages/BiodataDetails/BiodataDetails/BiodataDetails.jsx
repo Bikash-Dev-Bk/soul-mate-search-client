@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const BiodataDetails = ({ biodata }) => {
 
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure()
 
   const {
     biodataId,
@@ -30,7 +31,7 @@ const BiodataDetails = ({ biodata }) => {
     contactEmail,
   } = biodata;
 
-  const axiosPublic = useAxiosPublic()
+  
 
   const handleAddToFavourite = () => {
     const favBioData = {
@@ -56,7 +57,7 @@ const BiodataDetails = ({ biodata }) => {
       contactEmail,
     };
 
-    axiosPublic.post("/favourites", favBioData)
+    axiosSecure.post("/favourites", favBioData)
     .then((res) => {
       
       if (res.data.insertedId) {

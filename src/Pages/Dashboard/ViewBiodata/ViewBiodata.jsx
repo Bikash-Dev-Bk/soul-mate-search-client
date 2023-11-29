@@ -3,10 +3,12 @@ import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoard
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ViewBiodata = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data: myBiodata = {} } = useQuery({
     queryKey: ["myBiodata"],
@@ -18,7 +20,7 @@ const ViewBiodata = () => {
  
   const handleMakePremiumRequest = (myBiodata) => {
 
-    axiosPublic.patch(`/biodatas/premiumRequests/${myBiodata.contactEmail}`)
+    axiosSecure.patch(`/biodatas/premiumRequests/${myBiodata.contactEmail}`)
     .then((res) => {
       if (res.data.modifiedCount > 0) {
         Swal.fire({

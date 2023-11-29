@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const FavouritesBiodata = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure()
 
   const { data: myFavBiodata = [], refetch } = useQuery({
     queryKey: ["myFavBiodata"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`favourites/${user?.email}`);
+      const res = await axiosSecure.get(`favourites/${user?.email}`);
       return res.data;
     },
   });
@@ -29,7 +29,7 @@ const FavouritesBiodata = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/favourites/${favorite._id}`)
+        axiosSecure.delete(`/favourites/${favorite._id}`)
         .then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();

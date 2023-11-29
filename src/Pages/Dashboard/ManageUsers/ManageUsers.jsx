@@ -34,7 +34,7 @@ const ManageUsers = () => {
   };
 
   const handleMakePremium = (biodata) => {
-    axiosPublic
+    axiosSecure
       .patch(`/biodatas/premium/${biodata.contactEmail}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {

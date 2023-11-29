@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ApprovedPremium = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const [approvedPremium, setApprovedPremium] = useState([]);
 
@@ -22,7 +22,7 @@ const ApprovedPremium = () => {
 
 
   const handleMakePremium = (biodata) => {
-    axiosPublic
+    axiosSecure
       .patch(`/biodatas/premium/${biodata.contactEmail}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
