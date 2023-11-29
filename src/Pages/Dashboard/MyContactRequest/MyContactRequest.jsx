@@ -79,13 +79,29 @@ const MyContactRequest = () => {
                   {payment.userBiodataId}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  {payment.status}
+                  {payment.status === "Approved" ? (
+                    <p className="text-white text-center bg-[#04AA6D] rounded-full py-2">
+                      {payment.status}
+                    </p>
+                  ) : (
+                    <p className="text-white text-center bg-red-500 rounded-full py-2">
+                      {payment.status}
+                    </p>
+                  )}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  {payment.userBiodataMobile}
+                  {payment.status === "Approved" ? (
+                    <p>{payment.userBiodataMobile}</p>
+                  ) : (
+                    <p>Pending</p>
+                  )}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  {payment.userBiodataEmail}
+                  {payment.status === "Approved" ? (
+                    <p>{payment.userBiodataEmail}</p>
+                  ) : (
+                    <p>Pending</p>
+                  )}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
                   <button
