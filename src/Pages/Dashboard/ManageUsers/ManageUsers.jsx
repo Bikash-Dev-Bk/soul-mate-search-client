@@ -92,7 +92,7 @@ const ManageUsers = () => {
                   
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  {biodata.isPremium ? (
+                  {biodata.isPremium === true ? (
                     <p className="text-[#04AA6D]">Premium Member</p>
                   ) : (
                     <button
