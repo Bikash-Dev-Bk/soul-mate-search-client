@@ -88,7 +88,7 @@ const CheckoutForm = ({ userBiodata, myBiodata }) => {
           userBiodataName: userBiodata.name,
           userBiodataMobile: userBiodata.mobileNumber,
           userBiodataEmail: userBiodata.contactEmail,
-          status: "pending",
+          status: "Pending",
         };
 
         const res = await axiosSecure.post("/payments", payment);
