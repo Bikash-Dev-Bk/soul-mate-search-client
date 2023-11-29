@@ -3,20 +3,20 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const CheckOut = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const userBiodata = useLoaderData();
 
   const { data: myBiodata = [] } = useQuery({
     queryKey: ["myBiodata"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`biodata/${user?.email}`);
+      const res = await axiosSecure.get(`biodata/${user?.email}`);
       return res.data;
     },
   });
