@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import Chart from "./Chart";
 
 const AdminDashboard = () => {
   const axiosSecure = useAxiosSecure();
@@ -39,7 +40,6 @@ const AdminDashboard = () => {
 
   const totalPrice = payments.reduce((total, item) => total + item.price, 0);
 
-
   return (
     <div>
       <DashBoardHeroPages name="Admin Dashboard"></DashBoardHeroPages>
@@ -63,9 +63,14 @@ const AdminDashboard = () => {
           </div>
           <div className="flex flex-col justify-center items-center text-center bg-[#04AA6D] p-5 rounded-lg text-white">
             <h2 className="text-xl">Total Revenue</h2>
-            <p> <span className="text-3xl font-bold">{totalPrice}</span> <span className="font-semibold">BDT</span></p>
+            <p>
+              {" "}
+              <span className="text-3xl font-bold">{totalPrice}</span>{" "}
+              <span className="font-semibold">BDT</span>
+            </p>
           </div>
         </div>
+        <Chart biodatas={biodatas} maleBiodatas={maleBiodatas} femaleBiodatas={femaleBiodatas} premiumBiodatas={premiumBiodatas}></Chart>
       </div>
     </div>
   );
