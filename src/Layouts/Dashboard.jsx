@@ -11,6 +11,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import HeroPages from "../components/HeroPages/HeroPages";
 import useAdmin from "../hooks/useAdmin";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
@@ -149,6 +150,20 @@ const Dashboard = () => {
                   <p className="flex gap-2  items-center">
                     <FaHeart />
                     Favourites Bio Data
+                  </p>
+                </NavLink>
+              </li>
+              <li className="mt-3 hover:text-white">
+                <NavLink
+                  to="/dashboard/gotMarried"
+                  className={`${
+                    activeRoute === "/dashboard/gotMarried" &&
+                    "text-white font-bold  !bg-inherit "
+                  }`}
+                >
+                  <p className="flex gap-2  items-center">
+                    <BsFillPeopleFill />
+                    Got Married
                   </p>
                 </NavLink>
               </li>
