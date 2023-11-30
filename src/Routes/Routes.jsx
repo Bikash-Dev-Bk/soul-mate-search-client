@@ -21,6 +21,7 @@ import MyContactRequest from "../Pages/Dashboard/MyContactRequest/MyContactReque
 import FavouritesBiodata from "../Pages/Dashboard/FavouritesBiodata/FavouritesBiodata";
 import AdminRoute from "./AdminRoute";
 import GotMarried from "../Pages/Dashboard/GotMarried/GotMarried";
+import SuccessStory from "../Pages/Dashboard/SuccessStory/SuccessStory";
 
 export const router = createBrowserRouter([
   {
@@ -134,6 +135,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ApprovedContactRequest></ApprovedContactRequest>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "successStory",
+        element: (
+          <AdminRoute>
+            <SuccessStory></SuccessStory>
           </AdminRoute>
         ),
       },

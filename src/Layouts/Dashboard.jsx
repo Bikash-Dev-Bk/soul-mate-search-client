@@ -93,6 +93,20 @@ const Dashboard = () => {
                   </p>
                 </NavLink>
               </li>
+              <li className="mt-3 hover:text-white">
+                <NavLink
+                  to="/dashboard/successStory"
+                  className={`${
+                    activeRoute === "/dashboard/successStory" &&
+                    "text-white font-bold  !bg-inherit "
+                  }`}
+                >
+                  <p className="flex gap-2  items-center">
+                    <BsFillPeopleFill />
+                    Success Story
+                  </p>
+                </NavLink>
+              </li>
             </>
           ) : (
             <>
