@@ -3,11 +3,23 @@ import PropTypes from "prop-types";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const BiodataDetails = ({ biodata }) => {
-
   const { user } = useAuth();
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+
+  const { data: userDb = [] } = useQuery({
+    queryKey: ["userDb"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/users/${user?.email}`);
+      return res.data;
+    },
+  });
+
+  console.log("userDb", userDb);
 
   const {
     biodataId,
@@ -30,8 +42,6 @@ const BiodataDetails = ({ biodata }) => {
     mobileNumber,
     contactEmail,
   } = biodata;
-
-  
 
   const handleAddToFavourite = () => {
     const favBioData = {
@@ -57,9 +67,7 @@ const BiodataDetails = ({ biodata }) => {
       contactEmail,
     };
 
-    axiosSecure.post("/favourites", favBioData)
-    .then((res) => {
-      
+    axiosSecure.post("/favourites", favBioData).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({
           position: "center",
@@ -68,11 +76,9 @@ const BiodataDetails = ({ biodata }) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        
       }
     });
   };
-
 
   return (
     <div className="shadow-2xl rounded-xl p-5">
@@ -91,7 +97,7 @@ const BiodataDetails = ({ biodata }) => {
           <p>Date Of Birth: {dateOfBirth}</p>
           <p>Occupation: {occupation}</p>
           <button
-            onClick={()=>handleAddToFavourite()}
+            onClick={() => handleAddToFavourite()}
             className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
           >
             Add to Favourite
@@ -114,18 +120,29 @@ const BiodataDetails = ({ biodata }) => {
           <p>Expected Partner Height: {expectedPartnerHeight} cm</p>
           <p>Expected Partner Weight: {expectedPartnerWeight} KG</p>
         </div>
-        <div>
-          <h2 className="text-lg font-bold mb-2">Contact Details</h2>
-          <p>Email: {contactEmail}</p>
-          <p>Phone: {mobileNumber}</p>
-        </div>
       </div>
-      <div className="">
-        <Link to={`/checkout/${biodataId}`}>
-          <button className="w-1/2 md:w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
-            Request Contact Information
-          </button>
-        </Link>
+      <div className="mt-5">
+        <h2 className="text-lg font-bold mb-2">Contact Details</h2>
+        {userDb.isPremium === true ? (
+          <div>
+            <p>Email: {contactEmail}</p>
+            <p>Phone: {mobileNumber}</p>
+          </div>
+        ) : (
+          <div>
+            <p className="font-semibold text-red-600">
+              If you want to see contact information you have to be a premium
+              member or pay for the contact information.
+            </p>
+            <div className="">
+              <Link to={`/checkout/${biodataId}`}>
+                <button className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
+                  Request Contact Information
+                </button>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

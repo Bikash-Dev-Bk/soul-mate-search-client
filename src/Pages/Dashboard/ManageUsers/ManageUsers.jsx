@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-  
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
@@ -18,8 +17,20 @@ const ManageUsers = () => {
   });
 
   const handleMakeAdmin = (biodata) => {
-    axiosSecure.patch(`/users/admin/${biodata.contactEmail}`)
-    .then((res) => {
+    axiosSecure.patch(`/users/admin/${biodata.contactEmail}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `Now ${biodata.name} is an Admin!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+
+    axiosSecure.patch(`/biodatas/admin/${biodata.contactEmail}`).then((res) => {
       if (res.data.modifiedCount > 0) {
         refetch();
         Swal.fire({
@@ -36,6 +47,21 @@ const ManageUsers = () => {
   const handleMakePremium = (biodata) => {
     axiosSecure
       .patch(`/biodatas/premium/${biodata.contactEmail}`)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Now ${biodata.name} Premium Member!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+
+    axiosSecure
+      .patch(`/users/premium/${biodata.contactEmail}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();
@@ -82,14 +108,16 @@ const ManageUsers = () => {
                 </td>
 
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
-                  
+                  {biodata.isAdmin === true ? (
+                    <p className="text-[#04AA6D]">Admin</p>
+                  ) : (
                     <button
                       className="hover:text-white text-[#04AA6D] hover:bg-[#04AA6D] bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
                       onClick={() => handleMakeAdmin(biodata)}
                     >
                       Admin
                     </button>
-                  
+                  )}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-500 bg-white text-sm">
                   {biodata.isPremium === true ? (
