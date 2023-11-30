@@ -45,7 +45,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodatas/${params.id}`),
+          fetch(
+            `https://soul-mate-search-server.vercel.app/biodatas/${params.id}`
+          ),
       },
       {
         path: "/checkout/:id",
@@ -55,7 +57,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodatas/${params.id}`),
+          fetch(
+            `https://soul-mate-search-server.vercel.app/biodatas/${params.id}`
+          ),
       },
       {
         path: "/about",
@@ -102,7 +106,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "gotMarried",
-        element: <GotMarried></GotMarried>
+        element: <GotMarried></GotMarried>,
       },
 
       // admin routes

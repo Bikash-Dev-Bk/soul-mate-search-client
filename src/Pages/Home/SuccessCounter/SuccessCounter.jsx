@@ -4,11 +4,10 @@ import "./SuccessCounter.css";
 import { useEffect, useState } from "react";
 
 const SuccessCounter = () => {
-
   const [marriageComplete, setMarriageComplete] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/stories")
+    fetch("https://soul-mate-search-server.vercel.app/stories")
       .then((res) => res.json())
       .then((data) => {
         setMarriageComplete(data);
@@ -20,7 +19,7 @@ const SuccessCounter = () => {
   const [femaleBiodatas, setFemaleBiodatas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/biodatas")
+    fetch("https://soul-mate-search-server.vercel.app/biodatas")
       .then((res) => res.json())
       .then((data) => {
         const male = data.filter((biodata) => biodata.biodataType === "Male");
@@ -33,7 +32,6 @@ const SuccessCounter = () => {
         setBiodatas(data);
       });
   }, []);
-
 
   return (
     <div className="bg-success bg-fixed max-w-[1280px] mx-auto my-32 p-5 md:12 lg:p-24">

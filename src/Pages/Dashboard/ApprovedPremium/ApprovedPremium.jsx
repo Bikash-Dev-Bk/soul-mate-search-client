@@ -10,7 +10,7 @@ const ApprovedPremium = () => {
   const [approvedPremium, setApprovedPremium] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/biodatas")
+    fetch("https://soul-mate-search-server.vercel.app/biodatas")
       .then((res) => res.json())
       .then((data) => {
         const premium = data.filter(
@@ -19,7 +19,6 @@ const ApprovedPremium = () => {
         setApprovedPremium(premium);
       });
   }, []);
-
 
   const handleMakePremium = (biodata) => {
     axiosSecure

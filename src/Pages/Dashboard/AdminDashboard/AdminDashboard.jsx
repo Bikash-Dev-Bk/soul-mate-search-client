@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   const [premiumBiodatas, setPremiumBiodatas] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/biodatas")
+    fetch("https://soul-mate-search-server.vercel.app/biodatas")
       .then((res) => res.json())
       .then((data) => {
         const male = data.filter((biodata) => biodata.biodataType === "Male");
@@ -70,7 +70,12 @@ const AdminDashboard = () => {
             </p>
           </div>
         </div>
-        <Chart biodatas={biodatas} maleBiodatas={maleBiodatas} femaleBiodatas={femaleBiodatas} premiumBiodatas={premiumBiodatas}></Chart>
+        <Chart
+          biodatas={biodatas}
+          maleBiodatas={maleBiodatas}
+          femaleBiodatas={femaleBiodatas}
+          premiumBiodatas={premiumBiodatas}
+        ></Chart>
       </div>
     </div>
   );

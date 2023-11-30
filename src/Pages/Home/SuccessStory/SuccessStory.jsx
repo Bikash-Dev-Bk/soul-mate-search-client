@@ -11,7 +11,7 @@ const SuccessStory = () => {
   const [successStory, setSuccessStory] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/stories")
+    fetch("https://soul-mate-search-server.vercel.app/stories")
       .then((res) => res.json())
       .then((data) => {
         const sortedData = data.sort(
@@ -37,13 +37,15 @@ const SuccessStory = () => {
                 className="w-4/12 rounded-xl"
               />
               <Rating
-              className="mt-5"
+                className="mt-5"
                 style={{ maxWidth: 180 }}
                 value={story.reviewStar}
                 readOnly
               />
               <div className="p-5 text-center ">
-                <h2 className="font-semibold">Marriage Date: {story.marriageDate}</h2>
+                <h2 className="font-semibold">
+                  Marriage Date: {story.marriageDate}
+                </h2>
                 <p className="mt-2 text-justify">{story.successStoryText}</p>
               </div>
             </div>
