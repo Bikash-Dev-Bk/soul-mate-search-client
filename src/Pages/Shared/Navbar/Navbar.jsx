@@ -26,6 +26,7 @@ const Navbar = () => {
     <>
       <li className="hover:text-[#04AA6D]">
         <NavLink
+          onClick={openNav}
           to="/"
           className={`${
             activeRoute === "/" && "!text-[#04AA6D] font-bold  !bg-inherit"
@@ -36,6 +37,7 @@ const Navbar = () => {
       </li>
       <li className="hover:text-[#04AA6D]">
         <NavLink
+          onClick={openNav}
           to="/biodatas"
           className={`${
             activeRoute === "/biodatas" &&
@@ -48,6 +50,7 @@ const Navbar = () => {
       <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
+          onClick={openNav}
           to="/about"
           className={`${
             activeRoute === "/about" && "!text-[#04AA6D] font-bold  !bg-inherit"
@@ -59,6 +62,7 @@ const Navbar = () => {
       <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
+          onClick={openNav}
           to="/contact"
           className={`${
             activeRoute === "/contact" &&
@@ -73,6 +77,7 @@ const Navbar = () => {
           <li className="hover:text-[#04AA6D]">
             {" "}
             <NavLink
+              onClick={openNav}
               to="/dashboard"
               className={`${
                 activeRoute === "/dashboard" &&
@@ -94,6 +99,7 @@ const Navbar = () => {
         <li className="hover:text-[#04AA6D]">
           {" "}
           <NavLink
+            onClick={openNav}
             to="/login"
             className={`${
               activeRoute === "/login" &&
