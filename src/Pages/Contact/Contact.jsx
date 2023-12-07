@@ -17,27 +17,27 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto p-5 my-24">
         <div className=" flex gap-5 lg:gap-24 flex-col-reverse md:flex-row-reverse items-center">
           <div className=" flex-1">
-            <div className="relative z-10 bg-[#04AA6D] rounded-xl shadow-lg px-8 py-12 text-gray-600 md:w-full">
+            <div className="relative z-10 bg-[#04AA6D] shadow-lg px-8 py-12 text-gray-600 md:w-full">
               <form className="flex flex-col space-y-4">
                 <div>
                   <input
                     type="name"
                     placeholder="Name"
-                    className="ring-1  w-full rounded-lg px-4 py-2 mt-2 outline-none "
+                    className="ring-1  w-full px-4 py-2 mt-2 outline-none "
                   />
                 </div>
                 <div>
                   <input
                     type="email"
                     placeholder="Email"
-                    className="ring-1 ring-[#04AA6D] w-full rounded-lg px-4 py-2 mt-2 outline-none "
+                    className="ring-1 ring-[#04AA6D] w-full px-4 py-2 mt-2 outline-none "
                   />
                 </div>
                 <div>
                   <input
                     type="text"
                     placeholder="Phone"
-                    className="ring-1 ring-[#04AA6D] w-full rounded-lg px-4 py-2 mt-2 outline-none"
+                    className="ring-1 ring-[#04AA6D] w-full px-4 py-2 mt-2 outline-none"
                   />
                 </div>
                 <div>
@@ -45,11 +45,11 @@ const Contact = () => {
                     type="text"
                     placeholder="Message"
                     rows="4"
-                    className="ring-1 ring-[#04AA6D] w-full rounded-2xl px-4 py-2 mt-2 outline-none"
+                    className="ring-1 ring-[#04AA6D] w-full px-4 py-2 mt-2 outline-none"
                   ></textarea>
                 </div>
 
-                <div className="w-full text-center text-white bg-[#04AA6D] rounded-lg border border-white py-2 text-lg hover:bg-white hover:border-[#04AA6D] hover:text-[#04AA6D]">
+                <div className="w-full text-center text-white bg-[#04AA6D] border border-white py-2 text-lg hover:bg-white hover:border-[#04AA6D] hover:text-[#04AA6D]">
                   <button>Send Message</button>
                 </div>
               </form>

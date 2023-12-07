@@ -11,7 +11,7 @@ const Banner = () => {
             Trusted Matrimony & Matchmaking Service
           </h2>
           <Link to="/biodatas">
-            <button className="w-36 py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-5">
+            <button className="w-36 py-3 text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-5">
               Explore
             </button>
           </Link>
