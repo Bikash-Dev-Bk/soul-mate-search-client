@@ -64,7 +64,7 @@ const GotMarried = () => {
                 placeholder="Self Biodata Number"
                 {...register("selfBiodata", { required: true })}
                 required
-                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
+                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none  "
               />
             </div>
 
@@ -78,7 +78,7 @@ const GotMarried = () => {
                 placeholder="Partner Biodata Number"
                 {...register("partnerBiodata", { required: true })}
                 required
-                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
+                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none  "
               />
             </div>
 
@@ -91,7 +91,7 @@ const GotMarried = () => {
                 {...register("coupleImage", { required: true })}
                 required
                 type="file"
-                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
+                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none  "
               />
             </div>
 
@@ -104,7 +104,7 @@ const GotMarried = () => {
                 type="date"
                 {...register("marriageDate", { required: true })}
                 required
-                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
+                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none  "
               ></input>
             </div>
 
@@ -118,7 +118,7 @@ const GotMarried = () => {
                 {...register("reviewStar", { required: true })}
                 required
                 placeholder="Review Star"
-                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
+                className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none  "
               ></input>
             </div>
           </div>
@@ -135,12 +135,12 @@ const GotMarried = () => {
               placeholder="Success Story Review"
               {...register("successStoryText", { required: true })}
               required
-              className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
+              className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none  "
             />
           </div>
 
           <div className="flex justify-center mb-16 mt-10">
-            <button className="px-5 py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] ">
+            <button className="px-8 py-3 text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] ">
               Submit
             </button>
           </div>
