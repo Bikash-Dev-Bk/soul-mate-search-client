@@ -1,24 +1,24 @@
-import { useEffect } from "react";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
-import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const ApprovedPremium = () => {
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
-  const [approvedPremium, setApprovedPremium] = useState([]);
+  const { data: biodatas = [] } = useQuery({
+    queryKey: ["biodatas"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/biodatas");
+      return res.data;
+    },
+  });
 
-  useEffect(() => {
-    fetch("https://soul-mate-search-server.vercel.app/biodatas")
-      .then((res) => res.json())
-      .then((data) => {
-        const premium = data.filter(
-          (biodata) => biodata.isPremium === "Requested"
-        );
-        setApprovedPremium(premium);
-      });
-  }, []);
+  const approvedPremium = biodatas.filter(
+    (biodata) => biodata.isPremium === "Requested"
+  );
 
   const handleMakePremium = (biodata) => {
     axiosSecure
@@ -53,7 +53,7 @@ const ApprovedPremium = () => {
                 Biodata Id
               </th>
               <th className="px-5 py-3 border-b-2 border-gray-500 bg-gray-200 text-left text-md  text-gray-700 uppercase tracking-wider">
-                Make Premium
+                Action
               </th>
             </tr>
           </thead>
@@ -75,7 +75,7 @@ const ApprovedPremium = () => {
                     className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
                     onClick={() => handleMakePremium(biodata)}
                   >
-                    Premium
+                    Make Premium
                   </button>
                 </td>
               </tr>
