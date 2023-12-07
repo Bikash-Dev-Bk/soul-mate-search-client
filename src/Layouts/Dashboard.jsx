@@ -195,7 +195,7 @@ const Dashboard = () => {
 
           <button
             onClick={handleLogOut}
-            className="w-full lg:w-3/4 mt-8 flex justify-center gap-2 items-center  font-semibold  rounded-lg border  py-2 text-lg bg-white border-[#04AA6D] text-[#04AA6D] hover:bg-red-500 hover:text-white hover:border-red-500"
+            className="w-full lg:w-3/4 mt-8 flex justify-center gap-2 items-center  font-semibold border  py-2 text-lg bg-white border-[#04AA6D] text-[#04AA6D] hover:bg-red-600 hover:text-white hover:border-red-500"
           >
             <MdLogout />
             Logout

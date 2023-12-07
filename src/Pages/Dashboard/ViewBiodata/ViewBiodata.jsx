@@ -45,7 +45,7 @@ const ViewBiodata = () => {
           <img
             src={myBiodata.profileImage}
             alt=""
-            className="w-full lg:w-1/3 rounded-xl border-2 border-[#04AA6D] "
+            className="w-full lg:w-1/3"
           />
           <div>
             <div className="grid justify-between gap-5 grid-cols-1 md:grid-cols-2  ">
@@ -95,14 +95,14 @@ const ViewBiodata = () => {
             {myBiodata.isPremium === true ||
             myBiodata.isPremium === "Requested" ? (
               <button
-                className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
+                className="w-full py-3 text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
               >
                 Requested For Premium
               </button>
             ) : (
               <button
                 onClick={() => handleMakePremiumRequest(myBiodata)}
-                className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
+                className="w-full py-3 text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
               >
                 Make Biodata To Premium
               </button>
