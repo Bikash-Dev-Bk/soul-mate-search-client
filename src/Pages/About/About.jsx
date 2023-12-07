@@ -36,12 +36,12 @@ const About = () => {
             <img
               src={image}
               alt=""
-              className="rounded-tr-[60px] rounded-bl-[60px] md:rounded-tr-[100px] md:rounded-bl-[100px] hover:shadow-2xl "
+              
             />
           </div>
         </div>
 
-        <div className="flex gap-10 flex-col md:flex-row-reverse mt-48">
+        <div className="flex gap-10 flex-col md:flex-row-reverse mt-16">
           <div className="flex-1">
             <h3 className="text-2xl font-bold text-[#04AA6D]">Our Mission</h3>
 
@@ -68,7 +68,7 @@ const About = () => {
             <img
               src={image2}
               alt=""
-              className="rounded-tr-[60px] rounded-bl-[60px] md:rounded-tr-[100px] md:rounded-bl-[100px] hover:shadow-2xl "
+              
             />
           </div>
         </div>
