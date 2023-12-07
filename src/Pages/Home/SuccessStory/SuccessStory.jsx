@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Rating } from "@smastrom/react-rating";
@@ -6,20 +5,24 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import "swiper/css";
 import "swiper/css/navigation";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const SuccessStory = () => {
-  const [successStory, setSuccessStory] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch("https://soul-mate-search-server.vercel.app/stories")
-      .then((res) => res.json())
-      .then((data) => {
-        const sortedData = data.sort(
-          (a, b) => new Date(a.marriageDate) - new Date(b.marriageDate)
-        );
-        setSuccessStory(sortedData);
-      });
-  }, []);
+  const { data: story = [] } = useQuery({
+    queryKey: ["story"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/stories");
+      return res.data;
+    },
+  });
+
+  const successStory = story.sort(
+    (a, b) => new Date(a.marriageDate) - new Date(b.marriageDate)
+  );
+
 
   return (
     <div className="max-w-[1280px] mx-auto p-5 my-32">
