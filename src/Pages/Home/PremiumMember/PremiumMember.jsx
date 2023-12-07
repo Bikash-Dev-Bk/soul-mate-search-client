@@ -21,8 +21,8 @@ const PremiumMember = () => {
       <h2 className="text-center text-3xl font-bold mb-28">
         Premium Member Showcase
       </h2>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-center">
-        {premiumMember.slice(0, 6).map((member) => (
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 justify-between items-center">
+        {premiumMember.slice(0, 8).map((member) => (
           <PremiumMemberCard
             key={member._id}
             member={member}

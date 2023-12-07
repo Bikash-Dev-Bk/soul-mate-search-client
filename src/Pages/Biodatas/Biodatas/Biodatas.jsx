@@ -25,7 +25,7 @@ const Biodatas = () => {
       <HeroPages name="Bio Data's"></HeroPages>
       <div className="max-w-[1280px] mx-auto  biodatas-container my-24 p-5">
         <BioDataFilter></BioDataFilter>
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between items-center">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-between items-center">
           {biodatas.map((data) => (
             <BioDataCard key={data._id} data={data}></BioDataCard>
           ))}

@@ -1,6 +1,6 @@
 .biodatas-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
     justify-content: space-between;
     gap: 50px;
 }

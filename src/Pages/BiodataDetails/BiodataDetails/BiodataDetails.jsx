@@ -81,12 +81,12 @@ const BiodataDetails = ({ biodata }) => {
   };
 
   return (
-    <div className="shadow-2xl rounded-xl p-5">
-      <div className="flex flex-col md:flex-row justify-center md:justify-between">
+    <div className="border-2 border-[#04AA6D] p-4">
+      <div className="flex gap-5 flex-col md:flex-row justify-center md:justify-between">
         <img
           src={profileImage}
           alt=""
-          className="w-full md:w-1/2 rounded-xl border-2 border-[#04AA6D] "
+          className="w-full md:w-1/2 "
         />
         <div className="font-semibold mt-5 md:mt-0">
           <h2 className="font-bold">Name: {name}</h2>
@@ -98,7 +98,7 @@ const BiodataDetails = ({ biodata }) => {
           <p>Occupation: {occupation}</p>
           <button
             onClick={() => handleAddToFavourite()}
-            className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
+            className="w-full py-3  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
           >
             Add to Favourite
           </button>
@@ -136,7 +136,7 @@ const BiodataDetails = ({ biodata }) => {
             </p>
             <div className="">
               <Link to={`/checkout/${biodataId}`}>
-                <button className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
+                <button className="w-full py-3 text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4">
                   Request Contact Information
                 </button>
               </Link>

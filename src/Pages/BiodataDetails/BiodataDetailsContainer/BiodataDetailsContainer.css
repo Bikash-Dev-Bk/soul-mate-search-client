@@ -1,9 +1,9 @@
 .biodata-details-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 4fr;
     justify-content: space-between;
     align-items: start;
-    gap: 50px;
+    gap: 30px;
 }
 
 
