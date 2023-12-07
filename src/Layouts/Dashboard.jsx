@@ -12,6 +12,7 @@ import useAuth from "../hooks/useAuth";
 import HeroPages from "../components/HeroPages/HeroPages";
 import useAdmin from "../hooks/useAdmin";
 import { BsFillPeopleFill } from "react-icons/bs";
+import { IoMdPersonAdd } from "react-icons/io";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
@@ -110,6 +111,20 @@ const Dashboard = () => {
             </>
           ) : (
             <>
+              <li className="mt-3 hover:text-white ">
+                <NavLink
+                  to="/dashboard/addBioData"
+                  className={`${
+                    activeRoute === "/dashboard/addBioData" &&
+                    "text-white font-bold  !bg-inherit "
+                  }`}
+                >
+                  <p className="flex gap-2  items-center">
+                  <IoMdPersonAdd />
+                    Add Bio Data
+                  </p>
+                </NavLink>
+              </li>
               <li className="mt-3 hover:text-white ">
                 <NavLink
                   to="/dashboard/editBioData"

@@ -22,6 +22,7 @@ import FavouritesBiodata from "../Pages/Dashboard/FavouritesBiodata/FavouritesBi
 import AdminRoute from "./AdminRoute";
 import GotMarried from "../Pages/Dashboard/GotMarried/GotMarried";
 import SuccessStory from "../Pages/Dashboard/SuccessStory/SuccessStory";
+import AddBiodata from "../Pages/Dashboard/AddBiodata/AddBiodata";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "addBioData",
+        element: <AddBiodata></AddBiodata>,
+      },
       {
         path: "editBioData",
         element: <EditBiodata></EditBiodata>,
