@@ -22,7 +22,7 @@ const Navbar = () => {
     setActiveRoute(location.pathname);
   }, [location.pathname]);
 
-  const navLinks = (
+  const mobileNavLinks = (
     <>
       <li className="hover:text-[#04AA6D]">
         <NavLink
@@ -113,6 +113,91 @@ const Navbar = () => {
     </>
   );
 
+  const navLinks = (
+    <>
+      <li className="hover:text-[#04AA6D]">
+        <NavLink
+          to="/"
+          className={`${
+            activeRoute === "/" && "!text-[#04AA6D] font-bold  !bg-inherit"
+          }`}
+        >
+          Home
+        </NavLink>
+      </li>
+      <li className="hover:text-[#04AA6D]">
+        <NavLink
+          to="/biodatas"
+          className={`${
+            activeRoute === "/biodatas" &&
+            "!text-[#04AA6D] font-bold  !bg-inherit"
+          }`}
+        >
+          Biodatas
+        </NavLink>
+      </li>
+      <li className="hover:text-[#04AA6D]">
+        {" "}
+        <NavLink
+          to="/about"
+          className={`${
+            activeRoute === "/about" && "!text-[#04AA6D] font-bold  !bg-inherit"
+          }`}
+        >
+          About
+        </NavLink>
+      </li>
+      <li className="hover:text-[#04AA6D]">
+        {" "}
+        <NavLink
+          to="/contact"
+          className={`${
+            activeRoute === "/contact" &&
+            "!text-[#04AA6D] font-bold  !bg-inherit"
+          }`}
+        >
+          Contact
+        </NavLink>
+      </li>
+      {user ? (
+        <>
+          <li className="hover:text-[#04AA6D]">
+            {" "}
+            <NavLink
+              to="/dashboard"
+              className={`${
+                activeRoute === "/dashboard" &&
+                "!text-[#04AA6D] font-bold  !bg-inherit"
+              }`}
+            >
+              DashBoard
+            </NavLink>
+          </li>
+
+          <img
+            src={user?.photoURL}
+            alt="userPic"
+            // style={{ height: "40px" }}
+            className="flex justify-center items-center w-[60px] lg:w-[40px] rounded-full cursor-pointer border-2 border-[#04AA6D]"
+          />
+        </>
+      ) : (
+        <li className="hover:text-[#04AA6D]">
+          {" "}
+          <NavLink
+            to="/login"
+            className={`${
+              activeRoute === "/login" &&
+              "!text-[#04AA6D] font-bold  !bg-inherit"
+            }`}
+          >
+            Login
+          </NavLink>
+        </li>
+      )}
+    </>
+  );
+
   return (
     <>
       <nav>
@@ -129,7 +214,7 @@ const Navbar = () => {
             <GrClose />
           </div>
           <ul className=" flex flex-col list-none justify-center items-center text-center gap-12 text-2xl font-semibold">
-            {navLinks}
+            {mobileNavLinks}
           </ul>
         </div>
 

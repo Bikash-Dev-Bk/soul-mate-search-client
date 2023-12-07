@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-  baseURL: "https://soul-mate-search-server.vercel.app",
+  baseURL: import.meta.env.VITE_SERVER_URL,
 });
 
 const useAxiosSecure = () => {
