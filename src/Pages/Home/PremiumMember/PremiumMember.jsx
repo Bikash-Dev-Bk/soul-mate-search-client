@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
 import PremiumMemberCard from "./PremiumMemberCard/PremiumMemberCard";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const PremiumMember = () => {
-  const [premiumMember, setPremiumMember] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch("https://soul-mate-search-server.vercel.app/biodatas")
-      .then((res) => res.json())
-      .then((data) => {
-        const premium = data.filter((biodata) => biodata.isPremium === true);
-        const sortedData = premium.sort((a, b) => a.age - b.age);
-        setPremiumMember(sortedData);
-      });
-  }, []);
+  const { data: biodatas = [] } = useQuery({
+    queryKey: ["biodatas"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/biodatas");
+      return res.data;
+    },
+  });
+
+  const premium = biodatas.filter((biodata) => biodata.isPremium === true);
+  const premiumMember = premium.sort((a, b) => a.age - b.age);
 
   return (
     <div className="max-w-[1280px] mx-auto p-5 my-32">
