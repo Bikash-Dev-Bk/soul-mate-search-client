@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BiodataDetails from "../BiodataDetails/BiodataDetails";
 import "./BiodataDetailsContainer.css";
 import { Helmet } from "react-helmet";
@@ -7,8 +7,17 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
 const BiodataDetailsContainer = () => {
-  const biodata = useLoaderData();
+  const { id } = useParams();
+
   const axiosPublic = useAxiosPublic();
+
+  const { data: biodata = {} } = useQuery({
+    queryKey: ["biodata"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/biodatas/${id}`);
+      return res.data;
+    },
+  });
 
   const { data: biodatas = [] } = useQuery({
     queryKey: ["biodatas"],

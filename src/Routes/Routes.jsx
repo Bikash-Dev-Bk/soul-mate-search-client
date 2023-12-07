@@ -44,10 +44,6 @@ export const router = createBrowserRouter([
             <BiodataDetailsContainer></BiodataDetailsContainer>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://soul-mate-search-server.vercel.app/biodatas/${params.id}`
-          ),
       },
       {
         path: "/checkout/:id",
@@ -56,10 +52,6 @@ export const router = createBrowserRouter([
             <CheckOut></CheckOut>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://soul-mate-search-server.vercel.app/biodatas/${params.id}`
-          ),
       },
       {
         path: "/about",
