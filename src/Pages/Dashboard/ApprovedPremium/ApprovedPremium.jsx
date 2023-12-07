@@ -8,7 +8,7 @@ const ApprovedPremium = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
 
-  const { data: biodatas = [] } = useQuery({
+  const { data: biodatas = [], refetch } = useQuery({
     queryKey: ["biodatas"],
     queryFn: async () => {
       const res = await axiosPublic.get("/biodatas");
@@ -25,6 +25,7 @@ const ApprovedPremium = () => {
       .patch(`/biodatas/premium/${biodata.contactEmail}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
+          refetch()
           Swal.fire({
             position: "center",
             icon: "success",

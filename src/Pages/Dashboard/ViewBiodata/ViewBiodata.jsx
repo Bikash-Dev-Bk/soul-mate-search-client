@@ -10,7 +10,7 @@ const ViewBiodata = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  const { data: myBiodata = {} } = useQuery({
+  const { data: myBiodata = {}, refetch } = useQuery({
     queryKey: ["myBiodata"],
     queryFn: async () => {
       const res = await axiosPublic.get(`biodata/${user?.email}`);
@@ -25,6 +25,7 @@ const ViewBiodata = () => {
       .patch(`/biodatas/premiumRequests/${myBiodata.contactEmail}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
+          refetch();
           Swal.fire({
             position: "center",
             icon: "success",
@@ -91,7 +92,14 @@ const ViewBiodata = () => {
                 </div>
               </div>
             </div>
-            {myBiodata.isPremium === true || (
+            {myBiodata.isPremium === true ||
+            myBiodata.isPremium === "Requested" ? (
+              <button
+                className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
+              >
+                Requested For Premium
+              </button>
+            ) : (
               <button
                 onClick={() => handleMakePremiumRequest(myBiodata)}
                 className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D] mt-4"
