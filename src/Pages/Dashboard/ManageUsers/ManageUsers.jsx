@@ -17,19 +17,6 @@ const ManageUsers = () => {
   });
 
   const handleMakeAdmin = (biodata) => {
-    axiosSecure.patch(`/users/admin/${biodata.contactEmail}`).then((res) => {
-      if (res.data.modifiedCount > 0) {
-        refetch();
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `Now ${biodata.name} is an Admin!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
-
     axiosSecure.patch(`/biodatas/admin/${biodata.contactEmail}`).then((res) => {
       if (res.data.modifiedCount > 0) {
         refetch();
@@ -47,21 +34,6 @@ const ManageUsers = () => {
   const handleMakePremium = (biodata) => {
     axiosSecure
       .patch(`/biodatas/premium/${biodata.contactEmail}`)
-      .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `Now ${biodata.name} Premium Member!`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-
-    axiosSecure
-      .patch(`/users/premium/${biodata.contactEmail}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();
@@ -93,7 +65,7 @@ const ManageUsers = () => {
                 Action
               </th>
               <th className="px-5 py-3 border-b-2 border-gray-500 bg-gray-200 text-left text-md  text-gray-700 uppercase tracking-wider">
-              Action
+                Action
               </th>
             </tr>
           </thead>

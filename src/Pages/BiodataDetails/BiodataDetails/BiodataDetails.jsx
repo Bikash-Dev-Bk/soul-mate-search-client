@@ -14,7 +14,7 @@ const BiodataDetails = ({ biodata }) => {
   const { data: userDb = [] } = useQuery({
     queryKey: ["userDb"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/users/${user?.email}`);
+      const res = await axiosPublic.get(`/biodata/${user?.email}`);
       return res.data;
     },
   });
