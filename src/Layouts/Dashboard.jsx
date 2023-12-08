@@ -44,8 +44,6 @@ const Dashboard = () => {
 
   refetch();
 
-  console.log("myBiodata", myBiodata);
-
   return (
     <div className="max-w-[1550px] mx-auto flex flex-col md:flex-row">
       {/* dashboard side bar */}
