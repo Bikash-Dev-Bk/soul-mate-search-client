@@ -5,12 +5,14 @@ import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoard
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const EditBiodata = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -73,6 +75,7 @@ const EditBiodata = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate("/dashboard/viewBioData")
       }
 
     }

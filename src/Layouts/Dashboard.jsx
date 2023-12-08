@@ -34,13 +34,15 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const axiosPublic = useAxiosPublic();
 
-  const { data: myBiodata = {} } = useQuery({
+  const { data: myBiodata = {}, refetch } = useQuery({
     queryKey: ["myBiodata"],
     queryFn: async () => {
       const res = await axiosPublic.get(`biodata/${user?.email}`);
       return res.data;
     },
   });
+
+  refetch();
 
   console.log("myBiodata", myBiodata);
 

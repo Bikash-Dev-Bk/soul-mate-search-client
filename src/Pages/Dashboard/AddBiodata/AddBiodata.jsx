@@ -4,12 +4,15 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddBiodata = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -58,6 +61,7 @@ const AddBiodata = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/dashboard/viewBioData")
         }
       });
     }
