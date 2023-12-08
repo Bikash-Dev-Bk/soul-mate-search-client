@@ -90,10 +90,10 @@ const ManageUsers = () => {
                 Email
               </th>
               <th className="px-5 py-3 border-b-2 border-gray-500 bg-gray-200 text-left text-md  text-gray-700 uppercase tracking-wider">
-                Make Admin
+                Action
               </th>
               <th className="px-5 py-3 border-b-2 border-gray-500 bg-gray-200 text-left text-md  text-gray-700 uppercase tracking-wider">
-                Make Premium
+              Action
               </th>
             </tr>
           </thead>
@@ -115,7 +115,7 @@ const ManageUsers = () => {
                       className="hover:text-white text-[#04AA6D] hover:bg-[#04AA6D] bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
                       onClick={() => handleMakeAdmin(biodata)}
                     >
-                      Admin
+                      Make Admin
                     </button>
                   )}
                 </td>
@@ -127,7 +127,7 @@ const ManageUsers = () => {
                       className="text-white hover:text-[#04AA6D] bg-[#04AA6D] hover:bg-white border-2 border-[#04AA6D] px-4 py-2 rounded-full"
                       onClick={() => handleMakePremium(biodata)}
                     >
-                      Premium
+                      Make Premium
                     </button>
                   )}
                 </td>

@@ -19,10 +19,10 @@ const PremiumMember = () => {
   return (
     <div className="max-w-[1280px] mx-auto p-5 my-32">
       <h2 className="text-center text-3xl font-bold mb-28">
-        Premium Member Showcase
+        Our Premium Members
       </h2>
       <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 justify-between items-center">
-        {premiumMember.slice(0, 8).map((member) => (
+        {premiumMember.slice(0, 10).map((member) => (
           <PremiumMemberCard
             key={member._id}
             member={member}
