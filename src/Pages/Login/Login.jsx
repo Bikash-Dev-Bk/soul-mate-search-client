@@ -9,14 +9,11 @@ import {
 } from "react-simple-captcha";
 import "./Login.css";
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useAuth();
-
-  const axiosPublic = useAxiosPublic();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,21 +69,14 @@ const Login = () => {
   const handleSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
       console.log(result.user);
-      const userInfo = {
-        email: result.user?.email,
-        name: result.user?.displayName,
-      };
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User Logged in Successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate(from, { replace: true });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User Logged in Successfully.",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      navigate(from, { replace: true });
     });
   };
 

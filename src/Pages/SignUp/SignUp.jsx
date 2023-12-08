@@ -5,16 +5,13 @@ import { FcGoogle } from "react-icons/fc";
 import { BsPersonCircle } from "react-icons/bs";
 import "../Login/Login.css";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, signInWithGoogle, updateUserProfile } = useAuth();
-  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -31,24 +28,14 @@ const SignUp = () => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           // create user entry in the database
-          const userInfo = {
-            name: data.name,
-            email: data.email,
-          };
-          axiosPublic.post("/users", userInfo).then((res) => {
-            if (res.data.insertedId) {
-              console.log("user added to the database");
-              reset();
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "User created successfully.",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              navigate("/");
-            }
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "User created successfully.",
+            showConfirmButton: false,
+            timer: 1500,
           });
+          navigate("/");
         })
         .catch((error) => console.log(error));
     });
@@ -57,21 +44,14 @@ const SignUp = () => {
   const handleSignInWithGoogle = () => {
     signInWithGoogle().then((result) => {
       console.log(result.user);
-      const userInfo = {
-        email: result.user?.email,
-        name: result.user?.displayName,
-      };
-      axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User Logged in Successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate(from, { replace: true });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User Logged in Successfully.",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      navigate(from, { replace: true });
     });
   };
 
