@@ -13,6 +13,8 @@ import HeroPages from "../components/HeroPages/HeroPages";
 import useAdmin from "../hooks/useAdmin";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { IoMdPersonAdd } from "react-icons/io";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
@@ -30,6 +32,17 @@ const Dashboard = () => {
   }, [location.pathname]);
 
   const [isAdmin] = useAdmin();
+  const axiosPublic = useAxiosPublic();
+
+  const { data: myBiodata = {} } = useQuery({
+    queryKey: ["myBiodata"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`biodata/${user?.email}`);
+      return res.data;
+    },
+  });
+
+  console.log("myBiodata", myBiodata);
 
   return (
     <div className="max-w-[1550px] mx-auto flex flex-col md:flex-row">
@@ -111,91 +124,96 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <li className="mt-3 hover:text-white ">
-                <NavLink
-                  to="/dashboard/addBioData"
-                  className={`${
-                    activeRoute === "/dashboard/addBioData" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                  <IoMdPersonAdd />
-                    Add Bio Data
-                  </p>
-                </NavLink>
-              </li>
-              <li className="mt-3 hover:text-white ">
-                <NavLink
-                  to="/dashboard/editBioData"
-                  className={`${
-                    activeRoute === "/dashboard/editBioData" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                    <FaEdit></FaEdit>
-                    Edit Bio Data
-                  </p>
-                </NavLink>
-              </li>
-              <li className="mt-3 hover:text-white">
-                <NavLink
-                  to="/dashboard/viewBioData"
-                  className={`${
-                    activeRoute === "/dashboard/viewBioData" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                    <FaEye />
-                    View Bio Data
-                  </p>
-                </NavLink>
-              </li>
+              {myBiodata ? (
+                <>
+                  <li className="mt-3 hover:text-white ">
+                    <NavLink
+                      to="/dashboard/editBioData"
+                      className={`${
+                        activeRoute === "/dashboard/editBioData" &&
+                        "text-white font-bold  !bg-inherit "
+                      }`}
+                    >
+                      <p className="flex gap-2  items-center">
+                        <FaEdit></FaEdit>
+                        Edit Bio Data
+                      </p>
+                    </NavLink>
+                  </li>
+                  <li className="mt-3 hover:text-white">
+                    <NavLink
+                      to="/dashboard/viewBioData"
+                      className={`${
+                        activeRoute === "/dashboard/viewBioData" &&
+                        "text-white font-bold  !bg-inherit "
+                      }`}
+                    >
+                      <p className="flex gap-2  items-center">
+                        <FaEye />
+                        View Bio Data
+                      </p>
+                    </NavLink>
+                  </li>
 
-              <li className="mt-3 hover:text-white">
-                <NavLink
-                  to="/dashboard/myContactRequest"
-                  className={`${
-                    activeRoute === "/dashboard/myContactRequest" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                    <GiHelp />
-                    My Contact Request
-                  </p>
-                </NavLink>
-              </li>
-              <li className="mt-3 hover:text-white">
-                <NavLink
-                  to="/dashboard/favouritesBioData"
-                  className={`${
-                    activeRoute === "/dashboard/favouritesBioData" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                    <FaHeart />
-                    Favourites Bio Data
-                  </p>
-                </NavLink>
-              </li>
-              <li className="mt-3 hover:text-white">
-                <NavLink
-                  to="/dashboard/gotMarried"
-                  className={`${
-                    activeRoute === "/dashboard/gotMarried" &&
-                    "text-white font-bold  !bg-inherit "
-                  }`}
-                >
-                  <p className="flex gap-2  items-center">
-                    <BsFillPeopleFill />
-                    Got Married
-                  </p>
-                </NavLink>
-              </li>
+                  <li className="mt-3 hover:text-white">
+                    <NavLink
+                      to="/dashboard/myContactRequest"
+                      className={`${
+                        activeRoute === "/dashboard/myContactRequest" &&
+                        "text-white font-bold  !bg-inherit "
+                      }`}
+                    >
+                      <p className="flex gap-2  items-center">
+                        <GiHelp />
+                        My Contact Request
+                      </p>
+                    </NavLink>
+                  </li>
+                  <li className="mt-3 hover:text-white">
+                    <NavLink
+                      to="/dashboard/favouritesBioData"
+                      className={`${
+                        activeRoute === "/dashboard/favouritesBioData" &&
+                        "text-white font-bold  !bg-inherit "
+                      }`}
+                    >
+                      <p className="flex gap-2  items-center">
+                        <FaHeart />
+                        Favourites Bio Data
+                      </p>
+                    </NavLink>
+                  </li>
+                  <li className="mt-3 hover:text-white">
+                    <NavLink
+                      to="/dashboard/gotMarried"
+                      className={`${
+                        activeRoute === "/dashboard/gotMarried" &&
+                        "text-white font-bold  !bg-inherit "
+                      }`}
+                    >
+                      <p className="flex gap-2  items-center">
+                        <BsFillPeopleFill />
+                        Got Married
+                      </p>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <li className="mt-3 hover:text-white ">
+                  <NavLink
+                    to="/dashboard/addBioData"
+                    className={`${
+                      activeRoute === "/dashboard/addBioData" &&
+                      "text-white font-bold  !bg-inherit "
+                    }`}
+                  >
+                    <p className="flex gap-2  items-center">
+                      <IoMdPersonAdd />
+                      Add Bio Data
+                    </p>
+                  </NavLink>
+                </li>
+              )}
             </>
           )}
 
@@ -210,7 +228,7 @@ const Dashboard = () => {
 
           <button
             onClick={handleLogOut}
-            className="w-full lg:w-3/4 mt-8 flex justify-center gap-2 items-center  font-semibold border  py-2 text-lg bg-white border-[#04AA6D] text-[#04AA6D] hover:bg-red-600 hover:text-white hover:border-red-500"
+            className="w-full lg:w-3/4 mt-8 flex justify-center gap-2 items-center  font-semibold border  py-2 px-5 text-lg bg-white border-[#04AA6D] text-[#04AA6D] hover:bg-red-600 hover:text-white hover:border-red-500"
           >
             <MdLogout />
             Logout
