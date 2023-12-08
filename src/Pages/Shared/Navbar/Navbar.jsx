@@ -139,6 +139,17 @@ const Navbar = () => {
       <li className="hover:text-[#04AA6D]">
         {" "}
         <NavLink
+          to="/pricing"
+          className={`${
+            activeRoute === "/pricing" && "!text-[#04AA6D] font-bold  !bg-inherit"
+          }`}
+        >
+          Pricing
+        </NavLink>
+      </li>
+      <li className="hover:text-[#04AA6D]">
+        {" "}
+        <NavLink
           to="/about"
           className={`${
             activeRoute === "/about" && "!text-[#04AA6D] font-bold  !bg-inherit"

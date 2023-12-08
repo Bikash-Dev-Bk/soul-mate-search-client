@@ -23,6 +23,7 @@ import AdminRoute from "./AdminRoute";
 import GotMarried from "../Pages/Dashboard/GotMarried/GotMarried";
 import SuccessStory from "../Pages/Dashboard/SuccessStory/SuccessStory";
 import AddBiodata from "../Pages/Dashboard/AddBiodata/AddBiodata";
+import Pricing from "../Pages/Pricing/Pricing";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
             <CheckOut></CheckOut>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/pricing",
+        element: <Pricing></Pricing>,
       },
       {
         path: "/about",

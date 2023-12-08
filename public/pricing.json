@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Intro",
+    "description": "Perfect for getting started with basic profile creation and limited matches.",
+    "price": "$19.99",
+    "features": [
+      "Basic profile creation",
+      "Limited matches per month",
+      "Standard support",
+      "5GB photo storage"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Base",
+    "description": "Enhance your profile visibility and receive more matches with priority support.",
+    "price": "$79.99",
+    "features": [
+      "Enhanced profile visibility",
+      "Increased matches per month",
+      "Priority support",
+      "15GB photo storage"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Popular",
+    "description": "Unlock premium features, unlimited matches, and dedicated support for the ultimate experience.",
+    "price": "$149.99",
+    "features": [
+      "Premium profile features",
+      "Unlimited matches",
+      "Dedicated support",
+      "30GB photo storage"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Enterprise",
+    "description": "Tailored solutions with customizable matchmaking algorithms, personalized account management, and advanced security features.",
+    "price": "$299.99",
+    "features": [
+      "Customizable matchmaking algorithms",
+      "Personalized account manager",
+      "Advanced security features",
+      "Scalable photo storage"
+    ]
+  }
+]
