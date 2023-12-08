@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import DashBoardHeroPages from "../../../components/DashBoardHeroPages/DashBoardHeroPages";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -14,6 +15,14 @@ const EditBiodata = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+
+  const { data: myBiodata = {} } = useQuery({
+    queryKey: ["myBiodata"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`biodata/${user?.email}`);
+      return res.data;
+    },
+  });
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -28,6 +37,7 @@ const EditBiodata = () => {
     if (res.data.success) {
       // now send the biodata data to the server with the image url
       const biodata = {
+        biodataId: myBiodata.biodataId,
         name: data.name,
         biodataType: data.biodataType,
         profileImage: res.data.data.display_url,
@@ -54,27 +64,17 @@ const EditBiodata = () => {
       );
 
       // console.log(biodataRes.data);
-      // if (biodataRes.data.modifiedCount > 0) {
-      //   reset();
-      //   Swal.fire({
-      //     position: "center",
-      //     icon: "success",
-      //     title: `${data.name} is Updated Successfully!`,
-      //     showConfirmButton: false,
-      //     timer: 1500,
-      //   });
-      // }
-
-      if (biodataRes.data.acknowledged) {
+      if (biodataRes.data.modifiedCount > 0) {
         reset();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `${data.name}'s Biodata is Added in the Biodatas!`,
+          title: `${data.name}'s Biodata is Updated Successfully!`,
           showConfirmButton: false,
           timer: 1500,
         });
       }
+
     }
     // console.log("with image url", res.data);
   };
@@ -90,7 +90,7 @@ const EditBiodata = () => {
               <span>Biodata Type*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.biodataType}
               {...register("biodataType", { required: true })}
               required
               className="w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -111,6 +111,7 @@ const EditBiodata = () => {
             <input
               type="text"
               placeholder="Name"
+              defaultValue={myBiodata.name}
               {...register("name", { required: true })}
               required
               className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
@@ -139,6 +140,7 @@ const EditBiodata = () => {
               type="date"
               {...register("dateOfBirth", { required: true })}
               required
+              defaultValue={myBiodata.dateOfBirth}
               className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
             ></input>
           </div>
@@ -149,7 +151,7 @@ const EditBiodata = () => {
               <span>Height(cm)*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.height}
               {...register("height", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -178,7 +180,7 @@ const EditBiodata = () => {
               <span>Weight(kg)*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.weight}
               {...register("weight", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -212,6 +214,7 @@ const EditBiodata = () => {
             <input
               type="number"
               placeholder="Age"
+              defaultValue={myBiodata.age}
               {...register("age", { required: true })}
               required
               className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
@@ -224,7 +227,7 @@ const EditBiodata = () => {
               <span>Occupation*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.occupation}
               {...register("occupation", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -262,7 +265,7 @@ const EditBiodata = () => {
               <span>Race*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.race}
               {...register("race", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -287,6 +290,7 @@ const EditBiodata = () => {
             </label>
             <input
               type="text"
+              defaultValue={myBiodata.fathersName}
               placeholder="Fathers Name"
               {...register("fathersName", { required: true })}
               required
@@ -301,6 +305,7 @@ const EditBiodata = () => {
             </label>
             <input
               type="text"
+              defaultValue={myBiodata.mothersName}
               placeholder="Mothers Name"
               {...register("mothersName", { required: true })}
               required
@@ -314,7 +319,7 @@ const EditBiodata = () => {
               <span>Permanent Division name*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.permanentDivision}
               {...register("permanentDivision", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -339,7 +344,7 @@ const EditBiodata = () => {
               <span>Present Division name*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.presentDivision}
               {...register("presentDivision", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -365,6 +370,7 @@ const EditBiodata = () => {
             </label>
             <input
               type="number"
+              defaultValue={myBiodata.expectedPartnerAge}
               placeholder="Expected Partner Age"
               {...register("expectedPartnerAge", { required: true })}
               required
@@ -378,7 +384,7 @@ const EditBiodata = () => {
               <span>Expected Partner Height(cm)*</span>
             </label>
             <select
-              defaultValue="default"
+             defaultValue={myBiodata.expectedPartnerHeight}
               {...register("expectedPartnerHeight", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -408,7 +414,7 @@ const EditBiodata = () => {
               <span>Expected Partner Weight(kg)*</span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={myBiodata.expectedPartnerWeight}
               {...register("expectedPartnerWeight", { required: true })}
               required
               className=" w-full text-lg py-2 px-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg "
@@ -457,6 +463,7 @@ const EditBiodata = () => {
             <input
               type="text"
               placeholder="Mobile Number"
+              defaultValue={myBiodata.mobileNumber}
               {...register("mobileNumber", { required: true })}
               required
               className="w-full text-lg px-4 py-2 border-2 border-[#04AA6D] focus:outline-none rounded-lg"
