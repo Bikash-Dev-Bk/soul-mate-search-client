@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { BsPersonCircle } from "react-icons/bs";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import logo from '../../assets/logo/logo.png';
 import "./Login.css";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -81,19 +81,18 @@ const Login = () => {
   };
 
   return (
-    <div className=" bg_image pt-6 pb-12 px-4">
+    <div className="bg-gray-200 pt-6 pb-12 px-4">
       <Helmet>
         <title>Soul Mate Search | Login</title>
       </Helmet>
       <div className=" flex-col ">
-        <div className="flex flex-col justify-center items-center text-center lg:text-left text-white">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2">Welcome</h1>
-          <span className=" mb-5 text-lg">to Your account</span>
-          <BsPersonCircle className="text-[80px]" />
+        <div className="flex flex-col justify-center items-center text-center lg:text-left">
+          <img src={logo} alt="logo" className="w-[100px] mb-2" />
+          <h2 className=" mb-5 text-2xl font-bold">Login to your account</h2>
         </div>
-        <div className=" w-full md:w-[450px] mx-auto bg-white rounded-xl  bg-base-100 mt-10 p-8">
+        <div className=" w-full md:w-[450px] mx-auto bg-white rounded-xl  mt-10 p-8 ">
           <form onSubmit={handleSubmit} className="">
-            <div className=" mt-5">
+            <div className="">
               <div className="text-sm font-bold text-gray-700 tracking-wide">
                 Email
               </div>
