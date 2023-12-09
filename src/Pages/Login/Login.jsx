@@ -105,9 +105,9 @@ const Login = () => {
               </button>
             </div>
             <p className="flex items-center justify-center space-x-2 my-5">
-              <span className="h-px bg-[#04AA6D] w-32"></span>
+              <span className="h-px bg-[#04AA6D] w-20 md:w-32"></span>
               <span className="font-normal text-[#04AA6D]">Or Login with</span>
-              <span className="h-px bg-[#04AA6D] w-32"></span>
+              <span className="h-px bg-[#04AA6D] w-20 md:w-32"></span>
             </p>
             <button
               onClick={handleSignInWithGoogle}
