@@ -61,10 +61,10 @@ const SignUp = () => {
       </Helmet>
       <div className=" flex-col">
       <div className="flex flex-col justify-center items-center text-center lg:text-left">
-          <img src={logo} alt="logo" className="w-[100px] mb-2" />
+          <img src={logo} alt="logo" className="w-[80px] mb-2" />
           <h2 className=" mb-5 text-2xl font-bold">Create your account</h2>
         </div>
-        <div className=" w-full md:w-[450px] mx-auto bg-white rounded-xl mt-10 p-8">
+        <div className=" w-full md:w-[450px] mx-auto bg-white rounded-xl mt-5 p-8">
           <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="">
               <div className="text-sm font-bold text-gray-700 tracking-wide">
@@ -75,7 +75,7 @@ const SignUp = () => {
                 {...register("name", { required: true })}
                 name="name"
                 placeholder="Name"
-                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
+                className="w-full text-sm py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.name && (
                 <span className="text-red-600 mt-2">Name is required</span>
@@ -90,7 +90,7 @@ const SignUp = () => {
                 type="text"
                 {...register("photoURL", { required: true })}
                 placeholder="Photo URL"
-                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
+                className="w-full text-sm py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.photoURL && (
                 <span className="text-red-600 mt-2">Photo URL is required</span>
@@ -106,7 +106,7 @@ const SignUp = () => {
                 {...register("email", { required: true })}
                 name="email"
                 placeholder="Email"
-                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
+                className="w-full text-sm py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.email && (
                 <span className="text-red-600 mt-2">Email is required</span>
@@ -126,7 +126,7 @@ const SignUp = () => {
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                 })}
                 placeholder="Password"
-                className="w-full text-lg py-2 border-b-2 border-[#04AA6D] focus:outline-none"
+                className="w-full text-sm py-2 border-b-2 border-[#04AA6D] focus:outline-none"
               />
               {errors.password?.type === "required" && (
                 <p className="text-red-600 mt-2">Password is required</p>
@@ -150,20 +150,20 @@ const SignUp = () => {
             </div>
 
             <div className="  mt-6">
-              <button className="w-full py-3 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D]">
+              <button className="w-full py-2 rounded-lg  text-white bg-[#04AA6D] hover:bg-transparent border-2 border-[#04AA6D] hover:text-[#04AA6D]">
                 Register
               </button>
             </div>
-            <p className="flex items-center justify-center space-x-2 my-2">
-              <span className="h-px bg-gray-400 w-14"></span>
+            <p className="flex items-center justify-center space-x-2 my-5">
+              <span className="h-px bg-[#04AA6D] w-32"></span>
               <span className="font-normal text-[#04AA6D]">Or Login with</span>
-              <span className="h-px bg-gray-400 w-14"></span>
+              <span className="h-px bg-[#04AA6D] w-32"></span>
             </p>
             <button
               onClick={handleSignInWithGoogle}
-              className="w-full flex items-center justify-center py-3 rounded-lg border-2 border-[#04AA6D]  hover:bg-[#04AA6D] hover:text-white"
+              className="w-full flex items-center justify-center py-2 rounded-lg border-2 border-[#04AA6D]  hover:bg-[#04AA6D] hover:text-white"
             >
-              <FcGoogle className="text-2xl" />{" "}
+              <FcGoogle className="text-xl" />{" "}
               <span className="ml-2">Google</span>{" "}
             </button>
           </form>
