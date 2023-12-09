@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import logo from '../../assets/logo/logo.png';
-import "../Login/Login.css";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
